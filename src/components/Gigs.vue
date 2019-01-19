@@ -3,33 +3,33 @@
     <h1>Ближайшие выступления</h1>
     <ul v-for="(gig) in gigs" :key="gig.id">
       <li>
-        <span class="dt">{{gig.date}}, {{gig.time}}</span>
+        <span class="dt">
+          {{gig.date|moment("LLLL")}}
+        </span>
         <br>
-        <span class="gig.text">{{gig.text}}</span>
+        <span class="gig.text">
+          {{gig.place.name}}<br/>{{gig.place.address}}
+        </span>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
+const axi = axios.create({
+  baseURL: 'http://127.0.0.1:5000'
+})
+
 export default {
   name: "Gigs",
+  created: function() {
+    axi.get("/api/v1/gigs").then((resp) => this.gigs = resp.data);
+  },
   data: function() {
     return {
-      gigs: [
-        {
-          id: "1",
-          date: "3 февраля 2019",
-          time: "19:00",
-          text: 'Екатеринбург, Клуб "Дом печати", ул. Ленина, 49'
-        },
-        {
-          id: "2",
-          date: "9 февраля 2019",
-          time: "19:00",
-          text: 'Екатеринбург, "U-bar", ул. Добролюбова, 3В'
-        }
-      ]
+      gigs: []
     };
   }
 };
