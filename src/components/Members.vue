@@ -1,14 +1,29 @@
 <template>
   <div>
-    <el-row v-for="(it) in members" :key="it.idx">
-      <el-col :span="4">
-        <img class="round-logo" :src="photo(it.id)">
-      </el-col>
-      <el-col class="text" :span="20">
-        <h3>{{it.name}}</h3>
-        {{it.text}}
-      </el-col>
-    </el-row>
+    <div v-for="(it) in members" :key="it.id">
+      <div v-if="(it.order % 2) === 0">
+        <el-row class="odd-row">
+          <el-col class="text" :offset="4" :span="12">
+            <h3>{{it.name}}</h3>
+            {{it.text}}
+          </el-col>
+          <el-col :span="4">
+            <img class="round-logo" :src="photo(it.id)">
+          </el-col>
+        </el-row>
+      </div>
+      <div v-else>
+        <el-row class="even-row">
+          <el-col :offset="4" :span="4">
+            <img class="round-logo" :src="photo(it.id)">
+          </el-col>
+          <el-col class="text" :span="12">
+            <h3>{{it.name}}</h3>
+            {{it.text}}
+          </el-col>
+        </el-row>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,23 +31,23 @@
 import axios from "axios";
 
 const axi = axios.create({
-  baseURL: "http://127.0.0.1:5000"
+  baseURL: "http://79.135.68.2:9998"
 });
 
 export default {
   methods: {
     photo: function(idx) {
-      return this.photos.find(x => x.idx === idx).src
+      return this.photos.find(x => x.idx === idx).src;
     }
   },
   created: function() {
-    axi.get("/api/v1/members").then((resp) => {
+    axi.get("/api/v1/members").then(resp => {
       this.members = resp.data;
     });
   },
   data() {
     return {
-      members:[],
+      members: [],
       photos: [
         {
           idx: 1,
@@ -64,6 +79,16 @@ export default {
 .text {
   padding-left: 5em;
   padding-right: 5em;
+}
+
+.even-row {
+  padding-bottom: 100px;
   text-align: left;
 }
+
+.odd-row {
+  padding-bottom: 100px;
+  text-align: right;
+}
+
 </style>

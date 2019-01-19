@@ -20,7 +20,7 @@
 import axios from 'axios';
 
 const axi = axios.create({
-  baseURL: 'http://127.0.0.1:5000'
+  baseURL: "http://79.135.68.2:9998"
 })
 
 export default {
