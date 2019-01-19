@@ -1,15 +1,17 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header height="913px">
+      <el-header height="100%">
+        <img class="round" src="./assets/header.jpg"/>
       </el-header>
       <el-main>
         <Menu />
-        <img alt="M17 logo" src="./assets/logo.jpg">
-        <Gigs/>
-        <Contacts/>
+        <div class="view">
+          <router-view></router-view>
+        </div>
+        <Contacts />
       </el-main>
-      <el-footer>
+      <el-footer height="100%">
       </el-footer>
     </el-container>
   </div>
@@ -17,17 +19,16 @@
 
 <script>
 import Menu from "./components/Menu.vue";
-import Gigs from "./components/Gigs.vue";
 import Contacts from "./components/Contacts.vue";
-import Gallery from "./components/Gallery.vue";
 
 export default {
   name: "app",
   components: {
     Menu,
-    Gigs,
-    Gallery,
     Contacts
+  },
+  created: function() {
+    this.$router.push('news');
   }
 };
 </script>
@@ -37,15 +38,14 @@ html {
   background: #040507;
 }
 body {
-  padding: 0;
+  padding: 2em;
   margin: 0;
 }
-.el-header {
-  background-image: url("./assets/header.jpg");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-  display: block;
+.round {
+  border-radius: 50%;
+}
+.view {
+  padding: 2.5em 0;
 }
 #app {
   font-family: Impact, "Oswald", Helvetica, Arial, sans-serif;

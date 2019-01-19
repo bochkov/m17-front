@@ -1,5 +1,6 @@
 <template>
   <div class="gigs">
+    <img alt="M17 logo" src="@/assets/logo.jpg">
     <h1>Ближайшие выступления</h1>
     <ul v-for="(gig) in gigs" :key="gig.id">
       <li>
