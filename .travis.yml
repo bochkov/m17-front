@@ -1,0 +1,25 @@
+branches:
+  only:
+    - master
+
+sudo: required
+
+language: node_js
+node_js:
+  - "node"
+
+services:
+  - docker
+
+cache:
+  directories:
+    - "node_modules"
+
+after_success:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - eval $(aws ecr get-login --region us-east-1 --no-include-email)
+  - npm run build
+  - docker build -t m17-front .
+  - docker tag m17-front:latest 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
+  - docker push 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
