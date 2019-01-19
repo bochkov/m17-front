@@ -6,8 +6,7 @@
       background-color="#040507"
       text-color="#FFFFFF"
       active-text-color="#FF0000"
-      router
-    >
+      router>
       <el-menu-item index="news">Новости</el-menu-item>
       <el-menu-item index="members">Состав</el-menu-item>
       <el-menu-item index="gallery">Галерея</el-menu-item>

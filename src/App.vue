@@ -2,7 +2,7 @@
   <div id="app">
     <el-container>
       <el-header height="100%">
-        <img class="round" src="./assets/header.jpg"/>
+        <img class="round-logo" src="./assets/header.jpg"/>
       </el-header>
       <el-main>
         <Menu />
@@ -38,11 +38,14 @@ html {
   background: #040507;
 }
 body {
-  padding: 2em;
+  padding: 2em 0;
   margin: 0;
+  width: 100%;
 }
-.round {
+.round-logo {
   border-radius: 50%;
+  max-width: 100%;
+  height: auto;
 }
 .view {
   padding: 2.5em 0;
