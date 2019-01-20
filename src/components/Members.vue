@@ -28,11 +28,7 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const axi = axios.create({
-  baseURL: "http://79.135.68.2:9998"
-});
+import {axio} from '../App.vue';
 
 export default {
   methods: {
@@ -41,7 +37,7 @@ export default {
     }
   },
   created: function() {
-    axi.get("/api/v1/members").then(resp => {
+    axio.get("/api/v1/members").then(resp => {
       this.members = resp.data;
     });
   },

@@ -17,16 +17,11 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const axi = axios.create({
-  baseURL: "http://79.135.68.2:9998"
-})
-
+import {axio} from '../App.vue';
 export default {
   name: "Gigs",
   created: function() {
-    axi.get("/api/v1/gigs").then((resp) => this.gigs = resp.data);
+    axio.get("/api/v1/gigs").then((resp) => this.gigs = resp.data);
   },
   data: function() {
     return {
