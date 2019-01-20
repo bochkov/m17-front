@@ -40,7 +40,7 @@ export default {
 
 <style>
 html {
-  background: #040507;
+  background: black;
 }
 body {
   padding: 2em 0;

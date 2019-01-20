@@ -7,14 +7,14 @@
             <h3>{{it.name}}</h3>
             {{it.text}}
           </el-col>
-          <el-col :span="4">
+          <el-col :span="4" class="img-col">
             <img class="round-logo" :src="photo(it.id)">
           </el-col>
         </el-row>
       </div>
       <div v-else>
         <el-row class="even-row">
-          <el-col :offset="4" :span="4">
+          <el-col :offset="4" :span="4" class="img-col">
             <img class="round-logo" :src="photo(it.id)">
           </el-col>
           <el-col class="text" :span="12">
@@ -87,4 +87,7 @@ export default {
   text-align: right;
 }
 
+.img-col {
+  padding-top: 2em;
+}
 </style>
