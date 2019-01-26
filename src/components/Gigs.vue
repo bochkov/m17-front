@@ -5,19 +5,24 @@
       <img alt="M17 logo" src="@/assets/logo.jpg">
       <h1>Ближайшие выступления</h1>
       <el-row v-for="(gig) in gigs" :key="gig.id">
-        <el-col :offset="7" :span="2">
-          <a class="link-col" :href="gig.place.link" target="_blank">
-            <img :src="img(gig.place.id)">
-          </a>
-        </el-col>
-        <el-col :span="8">
-          <span class="dt">{{gig.date|moment("LLLL")}}</span>
-          <br>
-          <span class="gig.text">
-            {{gig.place.name}}
-            <br>
-            {{gig.place.address}}
-          </span>
+        <el-col :span="10" :offset="7">
+          <div class="gig">
+            <div class="gig-img">
+              <a class="link-col" :href="gig.place.link" target="_blank">
+                <img :src="img(gig.place)">
+              </a>
+            </div>
+            <div class="gig-content">
+              <span class="dt">{{gig.date|moment("LLLL")}}</span>
+              <br>
+              <span class="gig.text">
+                <br>
+                {{gig.place.name}}
+                <br>
+                {{gig.place.address}}
+              </span>
+            </div>
+          </div>
         </el-col>
       </el-row>
     </div>
@@ -37,12 +42,13 @@ export default {
     }
   },
   methods: {
-    img: function(id) {
+    img: function(place) {
       let img;
       try {
-        img = require("@/assets/place/" + id + ".png");
+        img = require("@/assets/place/" + place.id + ".png");
       } catch (ex) {
-        img = require("@/assets/place/empty.png");
+        //img = require("@/assets/place/empty.png");
+        img = "https://via.placeholder.com/135x120.png/000000/FFFFFF/?text=" + place.name;
       }
       return img;
     }
@@ -60,9 +66,19 @@ export default {
   font-size: 1.2em;
 }
 a > img {
-  height: 100px;
+  height: 120px;
 }
 .el-row {
   padding-top: 3em;
+}
+.gig-img {
+  float: left;
+}
+.gig-img img {
+  display: block;
+}
+.gig-content {
+  margin-left: 150px;
+  vertical-align: baseline;
 }
 </style>

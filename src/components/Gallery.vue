@@ -22,10 +22,10 @@ export default {
   data() {
     return {
       images: [
-        { src: require("@/assets/img/gal1.jpg"), idx: 1 },
-        { src: require("@/assets/img/gal2.jpg"), idx: 2 },
-        { src: require("@/assets/img/gal3.jpg"), idx: 3 },
-        { src: require("@/assets/img/gal4.jpg"), idx: 4 }
+        { src: require("@/assets/gallery/gal1.jpg"), idx: 1 },
+        { src: require("@/assets/gallery/gal2.jpg"), idx: 2 },
+        { src: require("@/assets/gallery/gal3.jpg"), idx: 3 },
+        { src: require("@/assets/gallery/gal4.jpg"), idx: 4 }
       ]
     };
   }

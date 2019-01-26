@@ -47,23 +47,23 @@ export default {
       photos: [
         {
           idx: 1,
-          src: require("@/assets/img/photo4.jpg")
+          src: require("@/assets/members/photo4.jpg")
         },
         {
           idx: 2,
-          src: require("@/assets/img/photo5.jpg")
+          src: require("@/assets/members/photo5.jpg")
         },
         {
           idx: 3,
-          src: require("@/assets/img/photo1.jpg")
+          src: require("@/assets/members/photo1.jpg")
         },
         {
           idx: 4,
-          src: require("@/assets/img/photo2.jpg")
+          src: require("@/assets/members/photo2.jpg")
         },
         {
           idx: 5,
-          src: require("@/assets/img/photo3.jpg")
+          src: require("@/assets/members/photo3.jpg")
         }
       ]
     };
