@@ -17,12 +17,14 @@ Vue.use(require('vue-moment'), {moment});
 const Gigs = () => import('./components/Gigs.vue');
 const Members = () => import('./components/Members.vue');
 const Gallery = () => import('./components/Gallery.vue');
+const Music = () => import('./components/Music.vue');
 const Links = () => import('./components/Links.vue');
 const Video = () => import('./components/Video.vue');
 const routes = [
   {path: '/news', component: Gigs},
   {path: '/members', component: Members},
   {path: '/gallery', component: Gallery},
+  {path: '/music', component: Music},
   {path: '/video', component: Video},
   {path: '/links', component: Links},
 ];
