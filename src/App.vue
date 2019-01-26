@@ -23,7 +23,7 @@ import Menu from "./components/Menu.vue";
 import Contacts from "./components/Contacts.vue";
 
 export const axio = axios.create({
-  baseURL: "http://127.0.0.1:5000"
+  // baseURL: "http://127.0.0.1:5000"
 });
 
 export default {

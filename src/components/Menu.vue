@@ -12,7 +12,7 @@
       <el-menu-item index="gallery">Галерея</el-menu-item>
       <el-menu-item index="music">Музыка</el-menu-item>
       <el-menu-item index="video">Видео</el-menu-item>
-      <el-menu-item index="links">Ссылки</el-menu-item>
+      <!-- <el-menu-item index="links">Ссылки</el-menu-item> -->
     </el-menu>
   </div>
 </template>
