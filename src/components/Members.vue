@@ -1,36 +1,56 @@
 <template>
   <div>
-    <div v-for="(it) in members" :key="it.id">
-      <div v-if="(it.order % 2) === 0">
-        <el-row class="odd-row">
-          <el-col class="text" :offset="4" :span="12">
-            <h3>{{it.name}}</h3>
-            {{it.text}}
-          </el-col>
-          <el-col :span="4" class="img-col">
-            <img class="round-logo" :src="photo(it.id)">
-          </el-col>
-        </el-row>
+    <div v-for="(it, index) in members" :key="it.id">
+      <div class="hidden-sm-and-down">
+        <div v-if="(it.order % 2) === 0">
+          <el-row :gutter="30" class="even-row">
+            <el-col class="text" :span="12" :offset="4">
+              <h3>{{it.name}}</h3>
+              {{it.text}}
+            </el-col>
+            <el-col class="img-col" :span="4">
+              <img class="round-logo" :src="photo(it.id)">
+            </el-col>
+          </el-row>
+        </div>
+        <div v-else>
+          <el-row :gutter="30" class="odd-row">
+            <el-col :offset="4" :span="4" class="img-col">
+              <img class="round-logo" :src="photo(it.id)">
+            </el-col>
+            <el-col class="text" :span="12">
+              <h3>{{it.name}}</h3>
+              {{it.text}}
+            </el-col>
+          </el-row>
+        </div>
+        <hr v-if="index !== last" class="fancy-line">
       </div>
-      <div v-else>
-        <el-row class="even-row">
-          <el-col :offset="4" :span="4" class="img-col">
-            <img class="round-logo" :src="photo(it.id)">
+      <div class="hidden-md-and-up">
+        <el-row>
+          <el-col>
+            <img class="round-logo logo-50" :src="photo(it.id)">
           </el-col>
-          <el-col class="text" :span="12">
+          <el-col class="text">
             <h3>{{it.name}}</h3>
             {{it.text}}
           </el-col>
         </el-row>
+        <hr v-if="index !== last" class="fancy-line">
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {axio} from '../App.vue';
+import { axio } from "../App.vue";
 
 export default {
+  computed: {
+    last: function() {
+      return Object.keys(this.members).length - 1;
+    }
+  },
   methods: {
     photo: function(idx) {
       return this.photos.find(x => x.idx === idx).src;
@@ -72,22 +92,10 @@ export default {
 </script>
 
 <style>
-.text {
-  padding-left: 5em;
-  padding-right: 5em;
-}
-
-.even-row {
-  padding-bottom: 100px;
+.odd-row {
   text-align: left;
 }
-
-.odd-row {
-  padding-bottom: 100px;
+.even-row {
   text-align: right;
-}
-
-.img-col {
-  padding-top: 2em;
 }
 </style>
