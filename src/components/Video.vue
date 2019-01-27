@@ -1,29 +1,29 @@
 <template>
-<div id="videos">
+  <div id="videos">
     <el-row v-for="(video) in videos" :key="video.id" class="video-row">
-        <el-col :span="18" :offset="3">
-            <span v-html="video.iframe"></span>
-        </el-col>
+      <el-col :xs="{span: 24, offset: 0}">
+        <span v-html="video.iframe"></span>
+      </el-col>
     </el-row>
-</div>
+  </div>
 </template>
 
 <script>
-import {axio} from "../App.vue";
+import { axio } from "../App.vue";
 export default {
-    created: function() {
-        axio.get("/api/v1/videos").then(resp => this.videos = resp.data);
-    },
-    data() {
-        return {
-            videos: []
-        }
-    }
-}
+  created: function() {
+    axio.get("/api/v1/videos").then(resp => (this.videos = resp.data));
+  },
+  data() {
+    return {
+      videos: []
+    };
+  }
+};
 </script>
 
 <style scoped>
 .video-row {
-    padding-bottom: 3em;
+  padding-bottom: 3em;
 }
 </style>
