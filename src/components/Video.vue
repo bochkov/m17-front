@@ -16,9 +16,15 @@
 
 <script>
 import { axio } from "../App.vue";
+import fitvids from "fitvids";
 export default {
   created: function() {
-    axio.get("/api/v1/videos").then(resp => (this.videos = resp.data));
+    axio.get("/api/v1/videos").then((resp) => {
+      this.videos = resp.data;
+    });
+  },
+  updated: function() {
+    fitvids({players: 'iframe[src*="//vk.com/"]'});
   },
   data() {
     return {

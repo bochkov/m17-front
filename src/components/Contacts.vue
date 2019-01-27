@@ -28,15 +28,11 @@ export default {};
 
 <style scoped>
 .link {
-  font-size: 5vw;
+  font-size: 1.7em;
   color: black;
 }
-.contacts {
-    padding-top: 3vh;
-    padding-bottom: 1vh;
-}
 .copy {
-    padding: 10px;
+    padding-top: 20px;
     font-size: 0.7em;
     color: whitesmoke;
 }
