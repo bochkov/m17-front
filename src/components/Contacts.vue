@@ -1,5 +1,6 @@
 <template>
   <div class="contacts">
+    <hr class="fancy-line">
     <el-row>
       <el-button circle>
         <a class="link" href="https://www.instagram.com/band_m17/" target="_blank">
@@ -9,6 +10,11 @@
       <el-button circle>
         <a class="link" href="https://vk.com/band_m17" target="_blank">
           <i class="fab fa-vk"></i>
+        </a>
+      </el-button>
+      <el-button circle>
+        <a class="link" href="mailto:band_m17@mail.ru">
+          <i class="far fa-envelope"></i>
         </a>
       </el-button>
     </el-row>
@@ -22,15 +28,15 @@ export default {};
 
 <style scoped>
 .link {
-  font-size: 1.8em;
+  font-size: 5vw;
   color: black;
 }
 .contacts {
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-top: 3vh;
+    padding-bottom: 1vh;
 }
 .copy {
-    padding: 20px;
+    padding: 10px;
     font-size: 0.7em;
     color: whitesmoke;
 }

@@ -6,19 +6,51 @@
       background-color="#040507"
       text-color="#FFFFFF"
       active-text-color="#FF0000"
-      router>
-      <el-menu-item index="news">Новости</el-menu-item>
-      <el-menu-item index="members">Состав</el-menu-item>
-      <el-menu-item index="gallery">Галерея</el-menu-item>
-      <el-menu-item index="music">Музыка</el-menu-item>
-      <el-menu-item index="video">Видео</el-menu-item>
-      <!-- <el-menu-item index="links">Ссылки</el-menu-item> -->
+      router
+    >
+      <el-menu-item
+        class="hidden-md-and-up"
+        v-for="(menu) in menus"
+        :key="menu.id"
+        :index="menu.index"
+      >
+        <i :class="menu.class"></i>
+      </el-menu-item>
+      <el-menu-item
+        class="hidden-sm-and-down"
+        v-for="(menu) in menus"
+        :key="100+menu.id"
+        :index="menu.index"
+      >{{menu.title}}</el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data: function() {
+    return {
+      menus: [
+        {
+          id: 0,
+          title: "Новости",
+          index: "news",
+          class: "fas fa-microphone-alt"
+        },
+        { id: 1, title: "Состав", index: "members", class: "fa fa-users" },
+        { id: 3, title: "Музыка", index: "music", class: "fas fa-guitar" },
+        {
+          id: 2,
+          title: "Галерея",
+          index: "gallery",
+          class: "fas fa-camera-retro"
+        },
+        { id: 4, title: "Видео", index: "video", class: "fas fa-video" }
+        // { id:5, title: "Ссылки", index: "links"},
+      ]
+    };
+  }
+};
 </script>
 
 <style>
@@ -35,5 +67,8 @@ export default {};
 }
 .el-menu-item {
   font-size: 1.5em;
+}
+.el-menu-item > i {
+  font-size: 3vw;
 }
 </style>

@@ -2,10 +2,10 @@
   <div id="music">
     <el-row v-for="(music, index) in musics" :key="music.id">
       <!-- встройка от яндекса -->
-      <el-row class="hidden-md-and-up ya-small">
+      <el-row class="hidden-sm-and-up ya-small">
         <span v-html="yandex(music.id).url"></span>
       </el-row>
-      <el-row class="hidden-sm-and-down ya">
+      <el-row class="hidden-xs-only ya">
         <span v-html="yandex(music.id).url"></span>
       </el-row>
       <!-- все остальное - ссылками -->
