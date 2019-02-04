@@ -10,7 +10,7 @@
       </el-row>
       <!-- все остальное - ссылками -->
       <el-row>
-        <span class="link-col" v-for="link in others(music.id)" :key="link.id" v-html="repr(link.url)"></span>
+        <span class="link-col" v-for="link in others(music.id)" :key="link.id" v-html="link.url"></span>
       </el-row>
       <hr v-if="index !== last" class="fancy-line">
     </el-row>
@@ -31,8 +31,7 @@ export default {
   },
   data: function() {
     return {
-      musics: [],
-      spotify: require("@/assets/Spotify_Logo_RGB_White.png")
+      musics: []
     };
   },
   methods: {
@@ -45,9 +44,6 @@ export default {
       return this.musics
         .find(x => x.id === musid)
         .links.filter(x => x.provid !== 1);
-    },
-    repr: function(url) {
-      return url.replace("$spotify", "<img src='" + this.spotify + "'/>");
     }
   }
 };

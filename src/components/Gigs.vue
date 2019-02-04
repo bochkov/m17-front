@@ -2,7 +2,7 @@
   <div class="gigs">
     <div v-if="isEmpty"></div>
     <div v-else>
-      <img class="logo-50" alt="M17 logo" src="@/assets/logo.jpg">
+      <img class="logo-50" alt="M17 logo" src="/static/logo.jpg">
       <h1>Ближайшие выступления</h1>
       <el-row v-for="(gig) in gigs" :key="gig.id">
         <el-col>
@@ -41,9 +41,9 @@ export default {
     img: function(place) {
       let img;
       try {
-        img = require("@/assets/place/" + place.id + ".png");
+        img = "/static/place/" + place.id + ".png";
       } catch (ex) {
-        img = require("@/assets/place/empty.png");
+        img = "/static/place/empty.png";
       }
       return img;
     }

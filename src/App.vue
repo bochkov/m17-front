@@ -2,7 +2,7 @@
   <div id="app">
     <el-container>
       <el-header height="100%">
-        <img class="round-logo" src="./assets/header.jpg"/>
+        <img class="round-logo" src="/static/header.jpg"/>
       </el-header>
       <el-main>
         <Menu />
@@ -23,7 +23,6 @@ import Menu from "./components/Menu.vue";
 import Contacts from "./components/Contacts.vue";
 
 export const axio = axios.create({
-  // baseURL: "http://127.0.0.1:5000"
 });
 
 export default {
