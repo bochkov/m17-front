@@ -1,5 +1,6 @@
 <template>
   <div id="news">
+    <img class="logo-50" alt="M17 logo" src="/static/logo_main.jpg">
     <el-row v-for="(n) in news" :key="n.id">
       <el-col
         :xs="24"

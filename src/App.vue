@@ -39,7 +39,8 @@ export default {
 
 <style>
 html {
-  background: black;
+  /* background: black; */
+  background: #020304;
 }
 body {
   padding: 2em 0;

@@ -1,7 +1,8 @@
 <template>
   <div class="gigs">
     <div v-if="isEmpty">
-      <img class="logo-50" alt="M17 logo" src="/static/logo.jpg">
+      <img class="logo-50" alt="M17 logo" src="/static/logo_main.jpg">
+      <h3>Ближайших концертов пока не предвидится</h3>
     </div>
     <div v-else>
       <el-row v-for="(gig) in gigs" :key="gig.id">
