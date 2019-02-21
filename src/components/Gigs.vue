@@ -1,9 +1,9 @@
 <template>
   <div class="gigs">
-    <div v-if="isEmpty"></div>
-    <div v-else>
+    <div v-if="isEmpty">
       <img class="logo-50" alt="M17 logo" src="/static/logo.jpg">
-      <h1>Ближайшие выступления</h1>
+    </div>
+    <div v-else>
       <el-row v-for="(gig) in gigs" :key="gig.id">
         <el-col>
           <a class="link-col" :href="gig.place.link" target="_blank">
@@ -61,7 +61,7 @@ export default {
   font-size: 1.2em;
 }
 a > img {
-  height: 120px;
+  height: 60px;
 }
 .el-row {
   padding-top: 3em;
