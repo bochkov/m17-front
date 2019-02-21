@@ -30,7 +30,7 @@
 export default {
   computed: {
     sortedmenu: function() {
-      return this.menus.sort((a, b) => a.id - b.id);
+      return this.menus.slice().sort((a, b) => a.id - b.id);
     }
   },
   data() {
