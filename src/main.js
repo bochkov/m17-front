@@ -21,6 +21,7 @@ const Music = () => import('./components/Music.vue');
 const Links = () => import('./components/Links.vue');
 const Video = () => import('./components/Video.vue');
 const News = () => import('./components/News.vue');
+const Tech = () => import('./components/Tech.vue')
 const routes = [
   {path: '/gigs', component: Gigs},
   {path: '/members', component: Members},
@@ -28,7 +29,8 @@ const routes = [
   {path: '/music', component: Music},
   {path: '/video', component: Video},
   {path: '/links', component: Links},
-  {path: '/news', component: News }
+  {path: '/news', component: News },
+  {path: '/tech', component: Tech},
 ];
 const router = new VueRouter({routes});
 

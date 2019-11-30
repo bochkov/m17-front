@@ -36,23 +36,14 @@ export default {
   data() {
     return {
       menus: [
-        {
-          id: 1,
-          title: "Афиша",
-          index: "gigs",
-          class: "fas fa-microphone-alt"
-        },
-        { id: 2, title: "Состав", index: "members", class: "fa fa-users" },
-        { id: 3, title: "Музыка", index: "music", class: "fas fa-guitar" },
-        {
-          id: 4,
-          title: "Галерея",
-          index: "gallery",
-          class: "fas fa-camera-retro"
-        },
-        { id: 5, title: "Видео", index: "video", class: "fas fa-video" },
-        // { id: 6, title: "Ссылки", index: "links"},
         { id: 0, title: "Новости", index: "news", class: "fas fa-bullhorn"},
+        { id: 1, title: "Афиша", index: "gigs", class: "fas fa-microphone-alt" },
+        // { id: 2, title: "Состав", index: "members", class: "fa fa-users" },
+        { id: 3, title: "Музыка", index: "music", class: "fas fa-guitar" },
+        // { id: 4, title: "Галерея", index: "gallery", class: "fas fa-camera-retro"},
+        // { id: 5, title: "Видео", index: "video", class: "fas fa-video" },
+        // { id: 6, title: "Ссылки", index: "links"},
+        { id: 7, title: "Итд", index: "tech", class: "fas fa-compact-disc"},
       ]
     };
   }

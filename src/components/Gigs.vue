@@ -1,23 +1,23 @@
 <template>
   <div class="gigs">
     <div v-if="isEmpty">
-      <img class="logo-50" alt="M17 logo" src="/static/logo_main.jpg">
+      <img class="logo-50" alt="M17 logo" :src="srcof()" />
       <h3>Ближайших концертов пока не предвидится</h3>
     </div>
     <div v-else>
       <el-row v-for="(gig) in gigs" :key="gig.id">
         <el-col>
           <a class="link-col" :href="gig.place.link" target="_blank">
-            <img :src="img(gig.place)">
+            <img :src="img(gig.place)" />
           </a>
         </el-col>
         <el-col>
           <span class="dt">{{gig.date|moment("LLLL")}}</span>
-          <br>
+          <br />
           <span class="gig.text">
-            <br>
+            <br />
             {{gig.place.name}}
-            <br>
+            <br />
             {{gig.place.address}}
           </span>
         </el-col>
@@ -39,6 +39,23 @@ export default {
     }
   },
   methods: {
+    srcof: function() {
+      var dt = new Date();
+      // 0 - jan
+      // 1 - feb
+      // 2 - mar
+      console.log(dt.getMonth());
+      if (dt.getMonth() == 0 || dt.getMonth() == 1 || dt.getMonth() == 11)
+        return "/static/logo_winter.jpg";
+      if (dt.getMonth() == 2 || dt.getMonth() == 3 || dt.getMonth() == 4)
+        return "/static/logo_main.jpg"; // spring
+      if (dt.getMonth() == 5 || dt.getMonth() == 6 || dt.getMonth() == 7)
+        return "/static/logo_main.jpg"; // summer
+      if (dt.getMonth() == 8 || dt.getMonth() == 9 || dt.getMonth() == 10)
+        return "/static/logo_main.jpg"; // autumn
+
+      return "/static/logo_main.jpg";
+    },
     img: function(place) {
       let img;
       try {

@@ -1,18 +1,7 @@
 <template>
   <div id="music">
-    <el-row v-for="(music, index) in musics" :key="music.id">
-      <!-- встройка от яндекса -->
-      <el-row class="hidden-sm-and-up ya-small">
-        <span v-html="yandex(music.id).url"></span>
-      </el-row>
-      <el-row class="hidden-xs-only ya">
-        <span v-html="yandex(music.id).url"></span>
-      </el-row>
-      <!-- все остальное - ссылками -->
-      <el-row>
-        <span class="link-col" v-for="link in others(music.id)" :key="link.id" v-html="link.url"></span>
-      </el-row>
-      <hr v-if="index !== last" class="fancy-line">
+    <el-row type="flex" justify="center" v-for="music in musics" :key="music.id" class="link-col">
+      <a :href="music.url" v-html="imgfor(music.id)"></a>
     </el-row>
   </div>
 </template>
@@ -35,6 +24,12 @@ export default {
     };
   },
   methods: {
+    imgfor(musid) {
+      if (musid == 1) return "<img src='/static/logo/yandex-music.png'>";
+      if (musid == 2) return "<img src='/static/logo/apple-music.png'>";
+      if (musid == 3) return "<img src='/static/logo/spotify.png'>";
+      if (musid == 4) return "<img src='/static/logo/google-play-badge.png'>";
+    },
     yandex: function(musid) {
       return this.musics
         .find(x => x.id === musid)
@@ -60,9 +55,9 @@ export default {
   margin-right: auto;
 }
 .link-col {
-  margin: 1%;
+  margin: 2em;
 }
 a > img {
-  height: 30px;
+  height: 50px;
 }
 </style>
