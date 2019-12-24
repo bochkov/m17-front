@@ -15,20 +15,18 @@ require('moment/locale/ru');
 Vue.use(require('vue-moment'), {moment});
 
 const Gigs = () => import('./components/Gigs.vue');
-const Members = () => import('./components/Members.vue');
-const Gallery = () => import('./components/Gallery.vue');
+// const Members = () => import('./components/Members.vue');
+// const Gallery = () => import('./components/Gallery.vue');
 const Music = () => import('./components/Music.vue');
-const Links = () => import('./components/Links.vue');
-const Video = () => import('./components/Video.vue');
+// const Video = () => import('./components/Video.vue');
 const News = () => import('./components/News.vue');
 const Tech = () => import('./components/Tech.vue')
 const routes = [
   {path: '/gigs', component: Gigs},
-  {path: '/members', component: Members},
-  {path: '/gallery', component: Gallery},
+  // {path: '/members', component: Members},
+  // {path: '/gallery', component: Gallery},
   {path: '/music', component: Music},
-  {path: '/video', component: Video},
-  {path: '/links', component: Links},
+  // {path: '/video', component: Video},
   {path: '/news', component: News },
   {path: '/tech', component: Tech},
 ];

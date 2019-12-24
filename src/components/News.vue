@@ -51,7 +51,7 @@ export default {
   text-align: justify;
 }
 
-#news a {
+#news a, a:visited {
   color: lightcoral;
 }
 </style>
