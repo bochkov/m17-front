@@ -21,7 +21,7 @@ export default {
   font-family: "Oswald", Arial, Helvetica, sans-serif;
 }
 
-#news a, a:visited {
+#tech a, a:visited {
   color: lightcoral;
 }
 </style>
