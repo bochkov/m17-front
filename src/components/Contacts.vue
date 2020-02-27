@@ -18,12 +18,23 @@
         </a>
       </el-button>
     </el-row>
-    <el-row class="copy">&copy; 2019, M17</el-row>
+    <el-row class="copy" v-html="year"></el-row>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    year: function() {
+      var ystr = "";
+      var y = new Date().getFullYear();
+      if (y > 2019) {
+        ystr = " &ndash; " + y
+      }
+      return "&copy; 2019" + ystr + ", M17"
+    }
+  },
+};
 </script>
 
 <style scoped>
