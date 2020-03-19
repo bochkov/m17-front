@@ -16,7 +16,7 @@ export default {
         return "/static/logo_winter.jpg";
       }
       if (dt.getMonth() == 2 || dt.getMonth() == 3 || dt.getMonth() == 4)
-        return "/static/logo_main.jpg"; // spring
+        return "/static/logo_spring.jpg"; // spring
       if (dt.getMonth() == 5 || dt.getMonth() == 6 || dt.getMonth() == 7)
         return "/static/logo_main.jpg"; // summer
       if (dt.getMonth() == 8 || dt.getMonth() == 9 || dt.getMonth() == 10)
