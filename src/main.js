@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-chalk/display.css';
+import * as moment from 'moment/moment.js';
 import App from './App.vue';
 
 Vue.config.productionTip = false;
@@ -10,7 +11,6 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(ElementUI);
 
-const moment = require('moment');
 require('moment/locale/ru');
 Vue.use(require('vue-moment'), {moment});
 
@@ -21,6 +21,7 @@ const Music = () => import('./components/Music.vue');
 // const Video = () => import('./components/Video.vue');
 const News = () => import('./components/News.vue');
 const Tech = () => import('./components/Tech.vue')
+
 const routes = [
   {path: '/gigs', component: Gigs},
   // {path: '/members', component: Members},
