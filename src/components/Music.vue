@@ -1,11 +1,14 @@
 <template>
   <div id="music">
-    <el-row type="flex" justify="center" v-for="music in musics" :key="music.id" class="link-col">
+    <div v-for="music in musics" :key="music.id" class="link-col">
+      <span class="title">{{music.name}} ({{music.year}})</span>
+      <br/>
       <img :src="cover(music.id)" width="200" height="200" />
-      <el-row v-for="prov in music.links" :key="prov.id">
+      <br/>
+      <span v-for="prov in music.links" :key="prov.id">
         <a :href="prov.url" target="_blank" v-html="imgfor(prov.id)"></a>
-      </el-row>
-    </el-row>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -63,7 +66,14 @@ export default {
 .link-col {
   margin: 2em;
 }
+.link-col > img {
+  margin: 1em;
+}
 a > img {
-  height: 50px;
+  height: 30px;
+  margin: 0.5em;
+}
+.title {
+  font-size: 1.5em;
 }
 </style>
