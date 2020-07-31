@@ -1,7 +1,10 @@
 <template>
   <div id="music">
     <el-row type="flex" justify="center" v-for="music in musics" :key="music.id" class="link-col">
-      <a :href="music.url" v-html="imgfor(music.id)"></a>
+      <img :src="cover(music.id)" width="200" height="200" />
+      <el-row v-for="prov in music.links" :key="prov.id">
+        <a :href="prov.url" target="_blank" v-html="imgfor(prov.id)"></a>
+      </el-row>
     </el-row>
   </div>
 </template>
@@ -24,9 +27,12 @@ export default {
     };
   },
   methods: {
+    cover(musid) {
+      return '/static/music/' + musid + '.png'
+    },
     imgfor(musid) {
       if (musid == 1) return "<img src='/static/logo/yandex-music.png'>";
-      if (musid == 2) return "<img src='/static/logo/apple-music.png'>";
+      if (musid == 2) return "<img src='/static/logo/apple-music.svg'>";
       if (musid == 3) return "<img src='/static/logo/spotify.png'>";
       if (musid == 4) return "<img src='/static/logo/google-play-badge.png'>";
     },
