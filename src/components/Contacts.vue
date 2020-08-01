@@ -24,12 +24,12 @@
       </el-button>
       <el-button circle>
         <a class="link" href="https://music.apple.com/ru/artist/m17/1266716485" target="_blank">
-          <img src="/static/logo/apple-music-black.svg" />
+          <font-awesome-icon :icon="['fab', 'itunes-note']" />
         </a>
       </el-button>
       <el-button circle>
         <a class="link" href="https://music.yandex.ru/artist/5259810" target="_blank">
-          <img src="/static/logo/yandex-music.png" />
+          <font-awesome-icon :icon="['fab', 'yandex']" />
         </a>
       </el-button>
     </el-row>
@@ -54,11 +54,8 @@ export default {
 
 <style scoped>
 .link {
-  font-size: 1.7em;
+  font-size: 1.2em;
   color: black;
-}
-.link > img {
-  width: 0.9em;
 }
 .copy {
     padding-top: 20px;

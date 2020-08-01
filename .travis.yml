@@ -23,3 +23,9 @@ after_success:
   - docker build -t m17-front .
   - docker tag m17-front:latest 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
   - docker push 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
+
+notifications:
+  email: false
+  webhooks:
+    urls:
+      - https://resnyx.sergeybochkov.com/travis
