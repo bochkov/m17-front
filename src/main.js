@@ -3,8 +3,15 @@ import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'element-ui/lib/theme-chalk/display.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { faInstagramSquare, faVk, faSpotify } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import * as moment from 'moment/moment.js';
 import App from './App.vue';
+
+library.add({faEnvelope, faInstagramSquare, faVk, faSpotify})
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false;
 

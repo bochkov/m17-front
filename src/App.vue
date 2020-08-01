@@ -60,7 +60,7 @@ body {
   padding: 2.5em 0;
 }
 #app {
-  font-family: Impact, "Oswald", Helvetica, Arial, sans-serif;
+  font-family: "Oswald", Impact, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

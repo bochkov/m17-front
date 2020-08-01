@@ -49,6 +49,8 @@ export default {
 
 #news .news_text {
   text-align: justify;
+  font-family: "Open Sans Condensed", Arial, Helvetica, sans-serif;
+  line-height: 1.7em;
 }
 
 #news a, a:visited {

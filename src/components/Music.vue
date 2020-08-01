@@ -1,10 +1,9 @@
 <template>
   <div id="music">
     <div v-for="music in musics" :key="music.id" class="link-col">
-      <span class="title">{{music.name}} ({{music.year}})</span>
-      <br/>
-      <img :src="cover(music.id)" width="200" height="200" />
-      <br/>
+      <span class="title">{{music.name}}</span><br/>
+      <span class="title.year">{{music.year}}</span><br/>
+      <img :src="cover(music.id)" width="200" height="200" /><br/>
       <span v-for="prov in music.links" :key="prov.id">
         <a :href="prov.url" target="_blank" v-html="imgfor(prov.id)"></a>
       </span>
@@ -75,5 +74,8 @@ a > img {
 }
 .title {
   font-size: 1.5em;
+}
+.title-year {
+  font-size: 1.2em;
 }
 </style>
