@@ -2,11 +2,11 @@
   <div id="menu">
     <el-menu
       mode="horizontal"
-      default-active="news"
       background-color="#040507"
       text-color="#FFFFFF"
       active-text-color="#FF0000"
-      router
+      :router="true"
+      :default-active="activeLink"
     >
       <el-menu-item
         class="hidden-md-and-up"
@@ -28,6 +28,11 @@
 
 <script>
 export default {
+  mounted: function() {
+    this.activeLink = this.$route.path;
+    if (this.activeLink == '/')
+      this.$router.push('news');
+  },
   computed: {
     sortedmenu: function() {
       return this.menus.slice().sort((a, b) => a.id - b.id);
@@ -35,17 +40,23 @@ export default {
   },
   data() {
     return {
+      activeLink: null,
       menus: [
-        { id: 0, title: "Новости", index: "news", class: "bullhorn"},
-        { id: 1, title: "Афиша", index: "gigs", class: "guitar" },
+        { id: 0, title: "Новости", index: "/news", class: "bullhorn"},
+        { id: 1, title: "Афиша", index: "/gigs", class: "guitar" },
         // { id: 2, title: "Состав", index: "members", class: "fa fa-users" },
-        { id: 3, title: "Музыка", index: "music", class: "compact-disc" },
+        { id: 3, title: "Музыка", index: "/music", class: "compact-disc" },
         // { id: 4, title: "Галерея", index: "gallery", class: "fas fa-camera-retro"},
         // { id: 5, title: "Видео", index: "video", class: "fas fa-video" },
         // { id: 6, title: "Ссылки", index: "links"},
-        { id: 7, title: "Ресурсы", index: "tech", class: "cog"},
+        { id: 7, title: "Ресурсы", index: "/tech", class: "cog"},
       ]
     };
+  },
+  watch: {
+    $route(to) {
+      this.activeLink = to.path;
+    }
   }
 };
 </script>

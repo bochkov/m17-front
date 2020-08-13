@@ -30,9 +30,6 @@ export default {
   components: {
     Menu,
     Contacts
-  },
-  created: function() {
-    this.$router.push('news');
   }
 };
 </script>

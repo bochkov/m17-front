@@ -28,7 +28,7 @@ const Gigs = () => import('./components/Gigs.vue');
 const Music = () => import('./components/Music.vue');
 // const Video = () => import('./components/Video.vue');
 const News = () => import('./components/News.vue');
-const Tech = () => import('./components/Tech.vue')
+const Tech = () => import('./components/Tech.vue');
 
 const routes = [
   {path: '/gigs', component: Gigs},
@@ -45,3 +45,7 @@ new Vue({
   render: h => h(App),
   router
 }).$mount('#app');
+
+new Vue({
+  render: h => h(App),
+}).$mount("#app0");
