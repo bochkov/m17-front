@@ -1,22 +1,20 @@
 <template>
   <div id="music">
     <div v-for="music in musics" :key="music.id" class="link-col">
-      <span class="title">{{music.name}}</span><br/>
-      <span class="title.year">{{music.year}}</span><br/>
-      <img :src="cover(music.id)" width="200" height="200" /><br/>
-      <span v-for="prov in music.links" :key="prov.id">
-        <a :href="prov.url" target="_blank" v-html="imgfor(prov.id)"></a>
+      <img :src="cover(music.id)" width="300" height="300" /><br/>
+      <span v-for="prov in music.links" :key="prov.provid">
+        <a :href="prov.url" target="_blank" v-html="imgfor(prov.provid)">{{ prov }}</a>
       </span>
     </div>
   </div>
 </template>
 
 <script>
-import { axio } from "../App.vue";
+import { axio } from "../Promo.vue";
 export default {
-  name: "Music",
+  name: "MusicPromo",
   created: function() {
-    axio.get("/api/v1/musics").then(resp => (this.musics = resp.data));
+    axio.get("/api/v1/promo").then(resp => (this.musics = resp.data));
   },
   computed: {
     last: function() {
@@ -33,10 +31,10 @@ export default {
       return '/static/music/' + musid + '.png'
     },
     imgfor(musid) {
-      if (musid == 1) return "<img src='/static/logo/yandex-music.png'>";
-      if (musid == 2) return "<img src='/static/logo/apple-music.svg'>";
-      if (musid == 3) return "<img src='/static/logo/spotify.png'>";
-      if (musid == 4) return "<img src='/static/logo/google-play-badge.png'>";
+      if (musid == 1) return "<img src='/static/logo/yandex-music-color.png'>";
+      if (musid == 2) return "<img src='/static/logo/apple-music-color.svg'>";
+      if (musid == 3) return "<img src='/static/logo/spotify-color.png'>";
+      if (musid == 4) return "<img src='/static/logo/youtube-color.png'>";
       if (musid == 5) return "<img src='/static/logo/vk-music.png'>";
     },
     yandex: function(musid) {
@@ -70,7 +68,7 @@ export default {
   margin: 1em;
 }
 a > img {
-  height: 30px;
+  height: 40px;
   margin: 0.5em;
 }
 .title {

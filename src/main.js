@@ -45,7 +45,3 @@ new Vue({
   render: h => h(App),
   router
 }).$mount('#app');
-
-new Vue({
-  render: h => h(App),
-}).$mount("#app0");
