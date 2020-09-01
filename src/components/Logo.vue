@@ -20,7 +20,7 @@ export default {
       if (dt.getMonth() == 5 || dt.getMonth() == 6 || dt.getMonth() == 7)
         return "/static/logo_main.jpg"; // summer
       if (dt.getMonth() == 8 || dt.getMonth() == 9 || dt.getMonth() == 10)
-        return "/static/logo_main.jpg"; // autumn
+        return "/static/logo_autumn.jpg"; // autumn
 
       return "/static/logo_main.jpg";
     }
