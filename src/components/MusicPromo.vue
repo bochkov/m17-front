@@ -1,11 +1,9 @@
 <template>
-  <div id="music">
-    <div v-for="music in musics" :key="music.id" class="link-col">
-      <img :src="cover(music.id)" width="300" height="300" /><br/>
-      <span v-for="prov in music.links" :key="prov.provid">
-        <a :href="prov.url" target="_blank" v-html="imgfor(prov.provid)">{{ prov }}</a>
-      </span>
-    </div>
+  <div id="music" class="link-col">
+    <img :src="cover(musics.id)" width="300" height="300" /><br/>
+    <span v-for="prov in musics.links" :key="prov.provid">
+      <a :href="prov.url" target="_blank" v-html="imgfor(prov.provid)">{{ prov }}</a>
+    </span>
   </div>
 </template>
 
