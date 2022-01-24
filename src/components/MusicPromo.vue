@@ -32,8 +32,8 @@ export default {
       if (musid == 1) return "<img src='/static/logo/yandex-music-color.png'>";
       if (musid == 2) return "<img src='/static/logo/apple-music-color.svg'>";
       if (musid == 3) return "<img src='/static/logo/spotify-color.png'>";
-      if (musid == 4) return "<img src='/static/logo/youtube-color.png'>";
-      if (musid == 5) return "<img src='/static/logo/vk-music.png'>";
+      if (musid == 4) return "<img src='/static/logo/youtube-color.svg'>";
+      if (musid == 5) return "<img src='/static/logo/vk-color.svg'>";
     },
     yandex: function(musid) {
       return this.musics

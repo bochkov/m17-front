@@ -3,9 +3,9 @@
     <div v-for="music in musics" :key="music.id" class="link-col">
       <span class="title">{{music.name}}</span><br/>
       <span class="title.year">{{music.year}}</span><br/>
-      <img :src="cover(music.id)" width="200" height="200" /><br/>
-      <span v-for="prov in music.links" :key="prov.id">
-        <a :href="prov.url" target="_blank" v-html="imgfor(prov.id)"></a>
+      <img :src="cover(music.id)" width="210" height="210" /><br/>
+      <span v-for="prov in music.links" :key="prov.provid">
+        <a :href="prov.url" target="_blank" v-html="imgfor(prov.provid)"></a>
       </span>
     </div>
   </div>
@@ -36,8 +36,8 @@ export default {
       if (musid == 1) return "<img src='/static/logo/yandex-music.png'>";
       if (musid == 2) return "<img src='/static/logo/apple-music.svg'>";
       if (musid == 3) return "<img src='/static/logo/spotify.png'>";
-      if (musid == 4) return "<img src='/static/logo/google-play-badge.png'>";
-      if (musid == 5) return "<img src='/static/logo/vk-music.png'>";
+      if (musid == 4) return "<img src='/static/logo/youtube.svg'>";
+      if (musid == 5) return "<img src='/static/logo/vk.svg'>";
     },
     yandex: function(musid) {
       return this.musics
