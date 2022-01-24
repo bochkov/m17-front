@@ -16,7 +16,7 @@ import { axio } from "../App.vue";
 export default {
   name: "Music",
   created: function() {
-    axio.get("/api/v1/musics").then(resp => (this.musics = resp.data));
+    axio.get("/api/v1/albums/all").then(resp => (this.musics = resp.data));
   },
   computed: {
     last: function() {

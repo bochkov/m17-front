@@ -7,7 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faEnvelope, faBullhorn, faCog, faGuitar, faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 import { faInstagramSquare, faVk, faSpotify, faItunesNote, faYandex } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import * as moment from 'moment/moment.js';
+import moment from 'moment/moment.js';
 import App from './App.vue';
 
 library.add({faEnvelope, faBullhorn, faGuitar, faCompactDisc, faCog})
