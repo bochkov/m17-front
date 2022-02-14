@@ -1,0 +1,21 @@
+.promo {
+    background: whitesmoke;
+    height: 100vh;
+}
+
+.promo__album {
+    padding-top: 100px;
+}
+
+.promo__album__cover {
+    width: 250px;
+    height: 250px;
+    border: 0.02em solid #acacac;
+    border-radius: 0.5em;
+}
+
+.promo__album__link__provider {
+    height: 45px;
+    margin: 0.5em;
+    padding-top: 1em;
+}

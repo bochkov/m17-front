@@ -1,0 +1,13 @@
+a.contacts__link, a.contacts__link:visited, a.contacts__link:hover {
+  color: black;
+}
+
+.contacts__link {
+  margin: 0 0.2em;
+}
+
+.contacts__copyright {
+  font-size: 0.7em;
+  margin-top: 0.5em;
+  margin-bottom: 3em;
+}

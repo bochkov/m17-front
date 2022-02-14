@@ -1,0 +1,9 @@
+.header {
+  margin-top: 1em;
+}
+
+.header__logo {
+  border-radius: 50%;
+  max-width: 70%;
+  height: auto;
+}
