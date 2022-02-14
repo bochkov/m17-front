@@ -1,13 +1,19 @@
 import React from 'react';
 import API from './Api';
 import Divide from './Divide';
-import VarLogo from './VarLogo';
 import './Gigs.css';
 import moment from 'moment';
+
+const needInvert = [
+    'dompechati', 'teleclub'
+]
 
 class Gig extends React.Component {
     logoOf(place) {
         return '/static/img/place/' + place.slug + '.png';
+    }
+    needInvert(place) {
+        return needInvert.includes(place.slug) ? 'invert' : '';
     }
     render() {
         return (
@@ -16,7 +22,8 @@ class Gig extends React.Component {
                 <br />
                 <div className='gig_place'>
                     <a href={this.props.gig.place.link} target="_blank" rel='noreferrer'>
-                        <img className='gig__place__logo' src={process.env.PUBLIC_URL + this.logoOf(this.props.gig.place)} alt='' />
+                        <img className={"gig__place__logo " + this.needInvert(this.props.gig.place)}
+                            src={process.env.PUBLIC_URL + this.logoOf(this.props.gig.place)} alt='' />
                     </a>
                     <span className='gig__place__address'>
                         <br />
@@ -49,7 +56,6 @@ class Gigs extends React.Component {
             <div>
                 {this.state.gigs.length === 0 ?
                     <div>
-                        <VarLogo />
                         <h3>Ближайших концертов пока не предвидится</h3>
                     </div> :
                     <div>

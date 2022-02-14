@@ -13,27 +13,27 @@ class Footer extends React.Component {
             urls: [
                 {
                     'url': 'https://www.instagram.com/band_m17/',
-                    'cn': <FontAwesomeIcon icon={faInstagramSquare} inverse/>
+                    'cn': <FontAwesomeIcon icon={faInstagramSquare} />
                 },
                 {
                     'url': 'https://vk.com/band_m17',
-                    'cn': <FontAwesomeIcon icon={faVk} inverse />
+                    'cn': <FontAwesomeIcon icon={faVk} />
                 },
                 {
                     'url': 'mailto:band_m17@mail.ru',
-                    'cn': <FontAwesomeIcon icon={faEnvelopeOpen} inverse />
+                    'cn': <FontAwesomeIcon icon={faEnvelopeOpen} />
                 },
                 {
                     'url': 'https://open.spotify.com/artist/60Utw1lKdWMXTWONojuscQ',
-                    'cn': <FontAwesomeIcon icon={faSpotify} inverse />
+                    'cn': <FontAwesomeIcon icon={faSpotify} />
                 },
                 {
                     'url': 'https://music.apple.com/ru/artist/m17/1266716485',
-                    'cn': <FontAwesomeIcon icon={faItunesNote} inverse />
+                    'cn': <FontAwesomeIcon icon={faItunesNote} />
                 },
                 {
                     'url': 'https://music.yandex.ru/artist/5259810',
-                    'cn': <FontAwesomeIcon icon={faYandex} inverse />
+                    'cn': <FontAwesomeIcon icon={faYandex} />
                 }
             ]
         }

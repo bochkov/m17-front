@@ -27,7 +27,6 @@ class VarLogo extends React.Component {
                 return '/static/img/varlogo/logo_autumn.jpg';
             default:
                 return '/static/img/varlogo/logo_main.jpg';
-
         }
     }
     render() {

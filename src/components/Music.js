@@ -17,7 +17,7 @@ class AlbumLink extends React.Component {
     render() {
         return (
             <a href={this.props.link.url} target='_blank' rel='noreferrer'>
-                <img className='album__link__provider' alt=''
+                <img className='album__link__provider invert' alt=''
                     src={process.env.PUBLIC_URL + this.imgurl(this.props.link.provid)} />
             </a>
         )
