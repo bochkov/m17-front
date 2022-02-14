@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagramSquare, faItunesNote, faSpotify, faVk, faYandex } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelopeOpen } from '@fortawesome/free-regular-svg-icons';
+import { faInstagram, faItunesNote, faSpotify, faVk, faYandex } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import './Footer.css';
 
@@ -12,29 +12,29 @@ class Footer extends React.Component {
         this.state = {
             urls: [
                 {
-                    'url': 'https://www.instagram.com/band_m17/',
-                    'cn': <FontAwesomeIcon icon={faInstagramSquare} />
+                    'url': 'mailto:band_m17@mail.ru',
+                    'cn': <FontAwesomeIcon icon={faEnvelope} />
                 },
                 {
                     'url': 'https://vk.com/band_m17',
                     'cn': <FontAwesomeIcon icon={faVk} />
                 },
                 {
-                    'url': 'mailto:band_m17@mail.ru',
-                    'cn': <FontAwesomeIcon icon={faEnvelopeOpen} />
+                    'url': 'https://www.instagram.com/band_m17/',
+                    'cn': <FontAwesomeIcon icon={faInstagram} />
                 },
                 {
                     'url': 'https://open.spotify.com/artist/60Utw1lKdWMXTWONojuscQ',
                     'cn': <FontAwesomeIcon icon={faSpotify} />
                 },
                 {
+                    'url': 'https://music.yandex.ru/artist/5259810',
+                    'cn': <FontAwesomeIcon icon={faYandex} />
+                },
+                {
                     'url': 'https://music.apple.com/ru/artist/m17/1266716485',
                     'cn': <FontAwesomeIcon icon={faItunesNote} />
                 },
-                {
-                    'url': 'https://music.yandex.ru/artist/5259810',
-                    'cn': <FontAwesomeIcon icon={faYandex} />
-                }
             ]
         }
     }

@@ -45,12 +45,32 @@ class Music extends React.Component {
             musics: []
         }
     }
-    componentDidMount() {
-        API.get('/api/v1/albums/all')
+    getEndpoint() {
+        switch (this.props.type) {
+            case 'albums':
+                return '/api/v1/albums';
+            case 'singles':
+                return '/api/v1/albums/singles';
+            case undefined:
+            default:
+                return '/api/v1/albums/all';
+        }
+    }
+    fetchData() {
+        const endpoint = this.getEndpoint();
+        API.get(endpoint)
             .then(res => {
                 const musics = res.data;
                 this.setState({ musics })
             });
+    }
+    componentDidMount() {
+        this.fetchData();
+    }
+    componentDidUpdate(prevProps) {
+        if (prevProps.type !== this.props.type) {
+            this.fetchData();
+        }
     }
     render() {
         return (
@@ -59,7 +79,7 @@ class Music extends React.Component {
                     (m, key) =>
                         <div key={m.id}>
                             <Album music={m} />
-                            <Divide cur={key+1} total={this.state.musics.length} />
+                            <Divide cur={key + 1} total={this.state.musics.length} />
                         </div>
                 )}
             </div>
