@@ -3,6 +3,7 @@ branches:
     - react
 
 sudo: required
+script: true
 
 language: node_js
 node_js:
