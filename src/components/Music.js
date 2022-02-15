@@ -32,7 +32,13 @@ class Album extends React.Component {
                 <span className='album__year'>{this.props.music.year}</span><br />
                 <img className='album__cover'
                     src={process.env.PUBLIC_URL + '/static/img/music/' + this.props.music.slug + '.png'} alt='' /><br />
-                <span>{this.props.music.links.map(link => <AlbumLink key={link.id} link={link} />)}</span>
+                {
+                    this.props.music.links.length === 0 ?
+                        <span className='album__soon'>скоро</span> :
+                        this.props.music.links.map(
+                            link => <AlbumLink key={link.id} link={link} />
+                        )
+                }
             </div>
         )
     }

@@ -18,6 +18,12 @@
     font-size: 1em;
 }
 
+.album__soon {
+    font-size: 1.5em;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+}
+
 .album__link__provider {
     height: 30px;
     margin: 0.5em;

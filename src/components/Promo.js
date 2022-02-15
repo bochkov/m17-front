@@ -1,6 +1,7 @@
 import React from 'react';
-import './Promo.css';
 import API from './Api';
+
+import './Promo.css';
 
 class AlbumLink extends React.Component {
     imgurl(lid) {
@@ -29,10 +30,14 @@ class Album extends React.Component {
             <div className='promo__album'>
                 <img className='promo__album__cover'
                     src={process.env.PUBLIC_URL + '/static/img/music/' + this.props.music.slug + '.png'}
-                    alt='' /><br />
-                <span>
-                    {this.props.music.links.map(link => <AlbumLink key={link.id} link={link} />)}
-                </span>
+                    alt='' /><p />
+                {
+                    this.props.music.links.length === 0 ?
+                        <span className='promo__album__soon'>скоро</span> :
+                        this.props.music.links.map(
+                            link => <AlbumLink key={link.id} link={link} />
+                        )
+                }
             </div>
         )
     }
