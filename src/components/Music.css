@@ -24,7 +24,7 @@
     text-transform: uppercase;
 }
 
-.album__link__provider {
+.album__link__provider > img {
     height: 30px;
     margin: 0.5em;
 }

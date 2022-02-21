@@ -1,5 +1,4 @@
 import React from 'react';
-import './Tech.css';
 
 class Tech extends React.Component {
     constructor(props) {

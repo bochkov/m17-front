@@ -7,8 +7,6 @@ import Gigs from './Gigs';
 import Music from './Music';
 import Tech from './Tech';
 
-import './Content.css';
-
 const { SubMenu } = Menu;
 const centerStyle = {
     position: 'relative',

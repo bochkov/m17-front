@@ -3,6 +3,7 @@ import moment from 'moment';
 
 import API from './Api';
 import Divide from './Divide';
+
 import './News.css';
 
 class Post extends React.Component {

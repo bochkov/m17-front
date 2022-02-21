@@ -1,25 +1,43 @@
 import React from 'react';
+
 import API from './Api';
+import { LgAppleMusicColor, LgSpotifyColor, LgVkMusicColor, LgYandexColor, LgYoutubeColor } from './logos/LgMusicProv';
 
 import './Promo.css';
 
 class AlbumLink extends React.Component {
-    imgurl(lid) {
-        switch (lid) {
-            case 1: return '/static/img/provider/yandex-music-color.png';
-            case 2: return '/static/img/provider/apple-music-color.svg';
-            case 3: return '/static/img/provider/spotify-color.png';
-            case 4: return '/static/img/provider/youtube-color.svg';
-            case 5: return '/static/img/provider/vk-color.svg';
-            default: return '';
-        }
-    }
     render() {
         return (
-            <a href={this.props.link.url} target='_blank' rel='noreferrer'>
-                <img className='promo__album__link__provider' alt=''
-                    src={process.env.PUBLIC_URL + this.imgurl(this.props.link.provid)} />
+            <a href={this.props.link.url} target='_blank' rel='noreferrer' className='promo__album__link__provider'>
+                {{
+                    '1': <LgYandexColor />,
+                    '2': <LgAppleMusicColor />,
+                    '3': <LgSpotifyColor />,
+                    '4': <LgYoutubeColor />,
+                    '5': <LgVkMusicColor />
+                }[this.props.link.provid]}
             </a>
+        )
+    }
+}
+
+class AlbumLinksOrSoon extends React.Component {
+    render() {
+        return (
+            this.props.links.length === 0 ?
+                <span className='promo__album__soon'>скоро</span> :
+                this.props.links.map(
+                    link => <AlbumLink key={link.id} link={link} />
+                )
+        )
+    }
+}
+
+class AlbumCover extends React.Component {
+    render() {
+        return (
+            <img className={this.props.className}
+                src={process.env.PUBLIC_URL + '/static/img/music/' + this.props.slug + '.png'} alt='' />
         )
     }
 }
@@ -28,16 +46,8 @@ class Album extends React.Component {
     render() {
         return (
             <div className='promo__album'>
-                <img className='promo__album__cover'
-                    src={process.env.PUBLIC_URL + '/static/img/music/' + this.props.music.slug + '.png'}
-                    alt='' /><p />
-                {
-                    this.props.music.links.length === 0 ?
-                        <span className='promo__album__soon'>скоро</span> :
-                        this.props.music.links.map(
-                            link => <AlbumLink key={link.id} link={link} />
-                        )
-                }
+                <AlbumCover className='promo__album__cover' slug={this.props.music.slug} /><p />
+                <AlbumLinksOrSoon links={this.props.music.links} />
             </div>
         )
     }

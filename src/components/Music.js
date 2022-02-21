@@ -1,25 +1,45 @@
 import React from 'react';
+
 import API from './Api';
 import Divide from './Divide';
+import { LgAppleMusic, LgSpotify, LgVkMusic, LgYandex, LgYoutube } from './logos/LgMusicProv';
+
 import './Music.css';
 
 class AlbumLink extends React.Component {
-    imgurl(lid) {
-        switch (lid) {
-            case 1: return '/static/img/provider/yandex-music.png';
-            case 2: return '/static/img/provider/apple-music.svg';
-            case 3: return '/static/img/provider/spotify.png';
-            case 4: return '/static/img/provider/youtube.svg';
-            case 5: return '/static/img/provider/vk.svg';
-            default: return '';
-        }
-    }
     render() {
         return (
-            <a href={this.props.link.url} target='_blank' rel='noreferrer'>
-                <img className='album__link__provider invert' alt=''
-                    src={process.env.PUBLIC_URL + this.imgurl(this.props.link.provid)} />
+            <a href={this.props.link.url} target='_blank' rel='noreferrer noopener'
+                className='album__link__provider invert'>
+                {{
+                    '1': <LgYandex />,
+                    '2': <LgAppleMusic />,
+                    '3': <LgSpotify />,
+                    '4': <LgYoutube />,
+                    '5': <LgVkMusic />
+                }[this.props.link.provid]}
             </a>
+        )
+    }
+}
+
+class AlbumLinksOrSoon extends React.Component {
+    render() {
+        return (
+            this.props.links.length === 0 ?
+                <span className='album__soon'>скоро</span> :
+                this.props.links.map(
+                    link => <AlbumLink key={link.id} link={link} />
+                )
+        )
+    }
+}
+
+class AlbumCover extends React.Component {
+    render() {
+        return (
+            <img className={this.props.className}
+                src={process.env.PUBLIC_URL + '/static/img/music/' + this.props.slug + '.png'} alt='' />
         )
     }
 }
@@ -30,15 +50,8 @@ class Album extends React.Component {
             <div className='album'>
                 <span className='album__title'>{this.props.music.name}</span><br />
                 <span className='album__year'>{this.props.music.year}</span><br />
-                <img className='album__cover'
-                    src={process.env.PUBLIC_URL + '/static/img/music/' + this.props.music.slug + '.png'} alt='' /><br />
-                {
-                    this.props.music.links.length === 0 ?
-                        <span className='album__soon'>скоро</span> :
-                        this.props.music.links.map(
-                            link => <AlbumLink key={link.id} link={link} />
-                        )
-                }
+                <AlbumCover className='album__cover' slug={this.props.music.slug} /><br />
+                <AlbumLinksOrSoon links={this.props.music.links} />
             </div>
         )
     }
