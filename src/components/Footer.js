@@ -12,7 +12,7 @@ class Footer extends React.Component {
         this.state = {
             urls: [
                 {
-                    'url': 'mailto:band_m17@mail.ru',
+                    'url': 'mailto:info@m17.info',
                     'cn': <FontAwesomeIcon icon={faEnvelope} />
                 },
                 {
