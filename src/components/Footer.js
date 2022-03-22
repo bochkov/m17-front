@@ -19,10 +19,10 @@ class Footer extends React.Component {
                     'url': 'https://vk.com/band_m17',
                     'cn': <FontAwesomeIcon icon={faVk} />
                 },
-                {
-                    'url': 'https://www.instagram.com/band_m17/',
-                    'cn': <FontAwesomeIcon icon={faInstagram} />
-                },
+                // {
+                //     'url': 'https://www.instagram.com/band_m17/',
+                //     'cn': <FontAwesomeIcon icon={faInstagram} />
+                // },
                 {
                     'url': 'https://open.spotify.com/artist/60Utw1lKdWMXTWONojuscQ',
                     'cn': <FontAwesomeIcon icon={faSpotify} />
