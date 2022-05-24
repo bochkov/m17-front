@@ -15,16 +15,22 @@ class Gig extends React.Component {
     needInvert(place) {
         return needInvert.includes(place.slug) ? 'invert' : '';
     }
+    placeLink(gig) {
+        if (gig.place.slug === 'empty' || gig.place.link === '')
+            return <p></p>
+        else
+            return <a href={gig.place.link} target="_blank" rel='noreferrer'>
+                <img className={"gig__place__logo " + this.needInvert(gig.place)}
+                    src={process.env.PUBLIC_URL + this.logoOf(gig.place)} alt='' />
+                </a>
+    }
     render() {
         return (
             <div className='gig'>
                 <span className='gig__dt'>{moment(this.props.gig.date * 1000).format("LLLL")}</span>
                 <br />
                 <div className='gig_place'>
-                    <a href={this.props.gig.place.link} target="_blank" rel='noreferrer'>
-                        <img className={"gig__place__logo " + this.needInvert(this.props.gig.place)}
-                            src={process.env.PUBLIC_URL + this.logoOf(this.props.gig.place)} alt='' />
-                    </a>
+                    {this.placeLink(this.props.gig)}
                     <span className='gig__place__address'>
                         <br />
                         {this.props.gig.place.name}
