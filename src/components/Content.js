@@ -48,7 +48,7 @@ function Content() {
                 <Route path='/music/singles' element={<Music type='singles' />} />
                 <Route path='/music/albums' element={<Music type='albums' />} />
                 <Route path='/tech' element={<Tech />} />
-                <Route path='*' element={<Navigate to='/music' />} />
+                <Route path='*' element={<Navigate to='/gigs' />} />
             </Routes>
         </div>
     )
