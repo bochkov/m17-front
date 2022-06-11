@@ -43,8 +43,8 @@ function Content() {
             </Menu>
             <Routes>
                 <Route path='/news' element={<News />} />
-                <Route path='/gigs' element={<Gigs />} />
-                <Route index path='/music' element={<Music />} />
+                <Route index path='/gigs' element={<Gigs />} />
+                <Route path='/music' element={<Music />} />
                 <Route path='/music/singles' element={<Music type='singles' />} />
                 <Route path='/music/albums' element={<Music type='albums' />} />
                 <Route path='/tech' element={<Tech />} />
