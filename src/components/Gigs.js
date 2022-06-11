@@ -4,16 +4,12 @@ import Divide from './Divide';
 import './Gigs.css';
 import moment from 'moment';
 
-const needInvert = [
-    'dompechati', 'teleclub'
-]
-
 class Gig extends React.Component {
     logoOf(place) {
         return '/static/img/place/' + place.slug + '.png';
     }
     needInvert(place) {
-        return needInvert.includes(place.slug) ? 'invert' : '';
+        return place["inverted-logo"] ? 'invert' : '';
     }
     placeLink(gig) {
         if (gig.place.slug === 'empty' || gig.place.link === '')
@@ -27,7 +23,12 @@ class Gig extends React.Component {
     render() {
         return (
             <div className='gig'>
-                <span className='gig__dt'>{moment(this.props.gig.date * 1000).format("LLLL")}</span>
+                <span className='gig__dt'>
+                    {moment(this.props.gig.date * 1000).format("DD MMMM YYYY, dddd")}<br/>
+                    {moment(this.props.gig.date * 1000).format("HH:mm")}
+                </span>
+                <br />
+                {this.props.gig.desc}
                 <br />
                 <div className='gig_place'>
                     {this.placeLink(this.props.gig)}
