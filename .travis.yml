@@ -1,6 +1,6 @@
 branches:
   only:
-    - react
+    - master
 
 sudo: required
 script: true
