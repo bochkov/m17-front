@@ -1,8 +1,9 @@
 branches:
   only:
-    - master
+    - react
 
 sudo: required
+script: true
 
 language: node_js
 node_js:
@@ -15,14 +16,17 @@ cache:
   directories:
     - "node_modules"
 
-after_success:
+before_install:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
-  - eval $(aws ecr get-login --region us-east-1 --no-include-email)
-  - make build
-  - docker build -t m17-front .
-  - docker tag m17-front:latest 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
-  - docker push 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
+
+deploy:
+  provider: script
+  sciript:
+    - eval $(aws ecr get-login --region us-east-1 --no-include-email)
+    - docker build -t m17-front .
+    - docker tag m17-front:latest 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
+    - docker push 902382300595.dkr.ecr.us-east-1.amazonaws.com/m17-front:latest
 
 notifications:
   email: false

@@ -1,0 +1,14 @@
+.post {
+    font-size: medium;
+}
+
+.post__dt {
+    text-align: right;
+    font-size: .8em;
+}
+
+.post__text {
+    text-align: justify;
+    font-family: "Open Sans Condensed", Arial, Helvetica, sans-serif;
+    line-height: 1.7em;
+}

@@ -1,0 +1,12 @@
+.gig__dt {
+    font-size: 1.2em;
+}
+
+.gig__place__logo {
+    height: 60px;
+    margin: 1em;
+}
+
+.gig__place__address {
+    font-size: 0.9em;
+}

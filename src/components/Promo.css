@@ -1,0 +1,24 @@
+
+.promo__album {
+    padding-top: 100px;
+}
+
+.promo__album__cover {
+    width: 250px;
+    height: 250px;
+    border: 0.02em solid #acacac;
+    border-radius: 0.5em;
+}
+
+.promo__album__soon {
+    font-size: 1.6em;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    padding-top: 10em;
+}
+
+.promo__album__link__provider > img {
+    height: 60px;
+    margin: 0.5em;
+    padding-top: 1em;
+}

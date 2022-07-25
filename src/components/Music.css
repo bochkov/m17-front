@@ -1,0 +1,30 @@
+.album {
+    margin-bottom: 1em;
+}
+
+.album__cover {
+    margin: 0.2em 0;
+    width: 210px;
+    height: 210px;
+    border: 0.02em solid #acacac;
+    border-radius: 0.5em;
+}
+
+.album__title {
+    font-size: 1.5em;
+}
+
+.album__year {
+    font-size: 1em;
+}
+
+.album__soon {
+    font-size: 1.5em;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+}
+
+.album__link__provider > img {
+    height: 30px;
+    margin: 0.5em;
+}
