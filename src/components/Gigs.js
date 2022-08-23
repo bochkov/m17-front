@@ -21,6 +21,12 @@ class Gig extends React.Component {
                 </a>
     }
     render() {
+        let gigdesc;
+        if (this.props.gig.desc === "") {
+            gigdesc = null
+        } else {
+            gigdesc = this.props.gig.desc
+        }
         return (
             <div className='gig'>
                 <span className='gig__dt'>
@@ -28,8 +34,7 @@ class Gig extends React.Component {
                     {moment(this.props.gig.date * 1000).format("HH:mm")}
                 </span>
                 <br />
-                {this.props.gig.desc}
-                <br />
+                {gigdesc}
                 <div className='gig_place'>
                     {this.placeLink(this.props.gig)}
                     <span className='gig__place__address'>

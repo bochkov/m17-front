@@ -7,7 +7,6 @@ import Gigs from './Gigs';
 import Music from './Music';
 import Tech from './Tech';
 
-const { SubMenu } = Menu;
 const centerStyle = {
     position: 'relative',
     display: 'flex',
@@ -16,31 +15,22 @@ const centerStyle = {
 }
 
 function Content() {
+    const items = [
+        {label: <NavLink to='/news'>Новости</NavLink>, key: 'news'},
+        {label: <NavLink to='/gigs'>Афиша</NavLink>, key: 'gigs'},
+        {label: 'Музыка', key: 'musicSubmenu', children: [
+            {label: <NavLink to='/music'>Все</NavLink>, key: 'music'},
+            {label: <NavLink to='/music/albums'>Альбомы</NavLink>, key: 'music/albums'},
+            {label: <NavLink to='/music/singles'>Синглы</NavLink>, key: 'music/singles'},
+        ]},
+        {label: <NavLink to='/tech'>Ресурсы</NavLink>, key: 'tech'}
+    ]
     let location = useLocation();
     return (
         <div>
-            <Menu style={centerStyle} mode='horizontal' selectedKeys={[location.pathname.substring(1)]}>
-                <Menu.Item key='news'>
-                    <NavLink to='/news'>Новости</NavLink>
-                </Menu.Item>
-                <Menu.Item key='gigs'>
-                    <NavLink to='/gigs'>Афиша</NavLink>
-                </Menu.Item>
-                <SubMenu key='musicSubmenu' title="Музыка">
-                    <Menu.Item key='music'>
-                        <NavLink to='/music'>Все</NavLink>
-                    </Menu.Item>
-                    <Menu.Item key='music/albums'>
-                        <NavLink to='/music/albums'>Альбомы</NavLink>
-                    </Menu.Item>
-                    <Menu.Item key='music/singles'>
-                        <NavLink to='/music/singles'>Синглы</NavLink>
-                    </Menu.Item>
-                </SubMenu>
-                <Menu.Item key='tech'>
-                    <NavLink to='/tech'>Ресурсы</NavLink>
-                </Menu.Item>
-            </Menu>
+            <Menu style={centerStyle} mode='horizontal' 
+                selectedKeys={[location.pathname.substring(1)]}
+                items={items} />
             <Routes>
                 <Route path='/news' element={<News />} />
                 <Route index path='/gigs' element={<Gigs />} />

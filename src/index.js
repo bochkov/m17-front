@@ -1,5 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ConfigProvider } from 'antd';
 import 'moment/locale/ru';
@@ -27,4 +26,6 @@ const app = (
     </BrowserRouter>
 );
 
-ReactDOM.render(app, document.getElementById("root"));
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(app);
