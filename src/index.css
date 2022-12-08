@@ -12,6 +12,6 @@ body {
 }
 
 .invert {
-    -wibkit-filter: invert(100%);
+    -webkit-filter: invert(100%);
     filter: invert(100%);
 }
