@@ -6,7 +6,7 @@ import 'moment/locale/ru';
 import App from './components/App';
 import Promo from './components/Promo';
 
-import 'antd/dist/antd.variable.min.css';
+import 'antd/dist/reset.css';
 import './index.css';
 
 ConfigProvider.config({

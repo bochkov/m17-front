@@ -11,22 +11,7 @@ class Gig extends React.Component {
     needInvert(place) {
         return place["inverted-logo"] ? 'invert' : '';
     }
-    placeLink(gig) {
-        if (gig.place.slug === 'empty' || gig.place.link === '')
-            return <p></p>
-        else
-            return <a href={gig.place.link} target="_blank" rel='noreferrer'>
-                <img className={"gig__place__logo " + this.needInvert(gig.place)}
-                    src={process.env.PUBLIC_URL + this.logoOf(gig.place)} alt='' />
-                </a>
-    }
     render() {
-        let gigdesc;
-        if (this.props.gig.desc === "") {
-            gigdesc = null
-        } else {
-            gigdesc = this.props.gig.desc
-        }
         return (
             <div className='gig'>
                 <span className='gig__dt'>
@@ -34,9 +19,24 @@ class Gig extends React.Component {
                     {moment(this.props.gig.date * 1000).format("HH:mm")}
                 </span>
                 <br />
-                {gigdesc}
+                {this.props.gig.desc !== "" &&
+                    <span>{this.props.gig.desc}</span>
+                }
+                {this.props.gig.url !== "" &&
+                    <span>
+                        <br/>
+                            <a href='{this.props.gig.url}'>{this.props.gig.url}</a>
+                        <br/>
+                    </span>
+                }
                 <div className='gig_place'>
-                    {this.placeLink(this.props.gig)}
+                    {this.props.gig.place.slug !== 'empty' && this.props.gig.place.link !== '' &&
+                        <a href={this.props.gig.place.link} target="_blank" rel='noreferrer'>
+                            <img className={"gig__place__logo " + this.needInvert(this.props.gig.place)}
+                                 src={process.env.PUBLIC_URL + this.logoOf(this.props.gig.place)} 
+                                 alt='' />
+                        </a>
+                    }
                     <span className='gig__place__address'>
                         <br />
                         {this.props.gig.place.name}
