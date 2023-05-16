@@ -15,26 +15,29 @@ class Gig extends React.Component {
         return (
             <div className='gig'>
                 <span className='gig__dt'>
-                    {moment(this.props.gig.date * 1000).format("DD MMMM YYYY, dddd")}<br/>
+                    {moment(this.props.gig.date * 1000).format("DD MMMM YYYY, dddd")}<br />
                     {moment(this.props.gig.date * 1000).format("HH:mm")}
                 </span>
-                <br />
+                <p />
                 {this.props.gig.desc !== "" &&
-                    <span>{this.props.gig.desc}</span>
+                    <span>
+                        {this.props.gig.desc}
+                    </span>
                 }
                 {this.props.gig.url !== "" &&
                     <span>
-                        <br/>
-                            <a href='{this.props.gig.url}'>{this.props.gig.url}</a>
-                        <br/>
+                        <br />
+                        <a target='_blank' rel='noreferrer' href={this.props.gig.url}>
+                            {this.props.gig.url}
+                        </a>
                     </span>
                 }
                 <div className='gig_place'>
                     {this.props.gig.place.slug !== 'empty' && this.props.gig.place.link !== '' &&
                         <a href={this.props.gig.place.link} target="_blank" rel='noreferrer'>
                             <img className={"gig__place__logo " + this.needInvert(this.props.gig.place)}
-                                 src={process.env.PUBLIC_URL + this.logoOf(this.props.gig.place)} 
-                                 alt='' />
+                                src={process.env.PUBLIC_URL + this.logoOf(this.props.gig.place)}
+                                alt='' />
                         </a>
                     }
                     <span className='gig__place__address'>
