@@ -1,5 +1,5 @@
 FROM node:20 AS builder
-COPY ./* .
+COPY . /
 RUN npm update && npm run build
 
 FROM nginx:alpine
