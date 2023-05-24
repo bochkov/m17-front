@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Menu } from 'antd';
 
-import News from './News';
 import Gigs from './Gigs';
 import Music from './Music';
 import Tech from './Tech';
@@ -16,7 +15,6 @@ const centerStyle = {
 
 function Content() {
     const items = [
-        {label: <NavLink to='/news'>Новости</NavLink>, key: 'news'},
         {label: <NavLink to='/gigs'>Афиша</NavLink>, key: 'gigs'},
         {label: 'Музыка', key: 'musicSubmenu', children: [
             {label: <NavLink to='/music'>Все</NavLink>, key: 'music'},
@@ -32,7 +30,6 @@ function Content() {
                 selectedKeys={[location.pathname.substring(1)]}
                 items={items} />
             <Routes>
-                <Route path='/news' element={<News />} />
                 <Route index path='/gigs' element={<Gigs />} />
                 <Route path='/music' element={<Music />} />
                 <Route path='/music/singles' element={<Music type='singles' />} />
