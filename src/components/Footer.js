@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram, faItunesNote, faSpotify, faVk, faYandex } from '@fortawesome/free-brands-svg-icons';
+import { faTelegram, faInstagram, faItunesNote, faSpotify, faVk, faYandex } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import './Footer.css';
@@ -18,6 +18,10 @@ class Footer extends React.Component {
                 {
                     'url': 'https://vk.com/band_m17',
                     'cn': <FontAwesomeIcon icon={faVk} />
+                },
+                {
+                    'url': 'https://t.me/m17_band',
+                    'cn': <FontAwesomeIcon icon={faTelegram} />
                 },
                 {
                     'url': 'https://www.instagram.com/band_m17/',
