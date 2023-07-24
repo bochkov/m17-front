@@ -6,12 +6,7 @@ import Gigs from './Gigs';
 import Music from './Music';
 import Tech from './Tech';
 
-const centerStyle = {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    margin: '1.5em 0',
-}
+import './Content.css'
 
 function Content() {
     const items = [
@@ -25,8 +20,8 @@ function Content() {
     ]
     let location = useLocation();
     return (
-        <div>
-            <Menu style={centerStyle} mode='horizontal' 
+        <div className='content'>
+            <Menu className='menu' mode='horizontal' 
                 selectedKeys={[location.pathname.substring(1)]}
                 items={items} />
             <Routes>
