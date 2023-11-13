@@ -1,49 +1,41 @@
+'use client'
+
 import React from 'react';
 import moment from 'moment';
+import 'moment/locale/ru';
 
-import API from './Api';
 import Divide from './Divide';
 
 import './News.css';
 
-class Post extends React.Component {
-    render() {
-        return (
-            <div className='post'>
-                <h2 className='post__title'>{this.props.post.title}</h2>
-                <p className='post__dt'>{moment(this.props.post.dt * 1000).from()}</p>
-                <p className='post__text' dangerouslySetInnerHTML={{ __html: this.props.post.text }}></p>
-            </div>
-        )
-    }
+function Post({post}) {
+    return (
+        <div className='post'>
+            <h2 className='post__title'>{post.title}</h2>
+            <p className='post__dt'>{moment(post.dt).from()}</p>
+            <p className='post__text' dangerouslySetInnerHTML={{ __html: post.text }}></p>
+        </div>
+    )
 }
 
-class News extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            news: []
-        }
-    }
-    componentDidMount() {
-        API.get('/api/v1/news').then(resp => {
-            const news = resp.data;
-            this.setState({ news })
-        });
-    }
-    render() {
-        return (
-            <div>
-                {this.state.news.map(
-                    (n, key) =>
-                        <div key={n.id}>
-                            <Post post={n} />
-                            <Divide cur={key + 1} total={this.state.news.length} />
-                        </div>
-                )}
-            </div>
-        )
-    }
-}
+export default function News() {
+    const [news, setNews] = React.useState([])
 
-export default News;
+    React.useEffect(() => {
+        fetch('/api/v1/news')
+            .then(resp => resp.json())
+            .then(resp => setNews(resp))
+    }, [])
+
+    return (
+        <div>
+            {news.map(
+                (n, key) =>
+                    <div key={n.id}>
+                        <Post post={n} />
+                        <Divide cur={key + 1} total={news.length} />
+                    </div>
+            )}
+        </div>
+    )
+}

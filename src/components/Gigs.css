@@ -5,7 +5,7 @@
 .gig__place__logo {
     height: auto;
     width: auto;
-    max-width: 85%;
+    /* max-width: 85%; */
     max-height: 75px;
     margin: 1em;
 }

@@ -1,11 +1,11 @@
 import React from "react";
 
-import { VaWinter, VaNewYear, VaSpring, VaAutumn, VaDefault } from './logos/LgVars';
+import { VaWinter, VaNewYear, VaSpring, VaAutumn, VaDefault } from './LgVars';
 
 import './VarLogo.css';
 
-class VarLogo extends React.Component {
-    srcof() {
+export default function VarLogo() {
+    const srcof = () => {
         let dt = new Date();
         // 0 - jan, 1 - feb, 2 - mar, etc
         switch (dt.getMonth()) {
@@ -32,13 +32,10 @@ class VarLogo extends React.Component {
                 return <VaDefault />
         }
     }
-    render() {
-        return (
-            <div className="varlogo__logo">
-                {this.srcof()}
-            </div>
-        )
-    }
-}
 
-export default VarLogo;
+    return (
+        <div className="varlogo__logo">
+            {srcof()}
+        </div>
+    )
+}
