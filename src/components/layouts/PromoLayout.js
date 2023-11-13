@@ -1,6 +1,6 @@
 'use client'
 
-import YandexMetrika from 'next-yandex-metrika';
+import YandexMetrika from '@/components/util/YaMetrika'
 
 export default function PromoLayout({children}) {
     return (

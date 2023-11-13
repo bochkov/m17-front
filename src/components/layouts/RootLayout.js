@@ -1,6 +1,6 @@
 import { Oswald } from 'next/font/google';
 import { ConfigProvider } from 'antd';
-import YandexMetrika from 'next-yandex-metrika';
+import YandexMetrika from '@/components/util/YaMetrika'
 
 const oswald = Oswald({
     subsets: ['cyrillic'],
