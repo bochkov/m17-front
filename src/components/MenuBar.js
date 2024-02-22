@@ -16,6 +16,7 @@ export default function MenuBar() {
             {label: <Link href='/music/albums'>Альбомы</Link>, key: 'music/albums'},
             {label: <Link href='/music/singles'>Синглы</Link>, key: 'music/singles'},
         ]},
+        {label: <Link href='/lyrics'>Тексты</Link>, key: 'lyrics'},
         {label: <Link href='/tech'>Ресурсы</Link>, key: 'tech'}
     ]
 
