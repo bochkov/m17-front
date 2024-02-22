@@ -1,0 +1,34 @@
+.lyric {
+    display: block;
+}
+
+.lyric__name {
+    padding-bottom: 1em;
+    font-size: large;
+    display: block;
+    text-align: center;
+}
+
+.lyric__text {
+    white-space: pre-wrap;
+    display: inline-block;
+    text-align: left;
+    padding-left: 2em;
+    font-size: 1.3em;
+}
+
+.lyrics__album {
+    display: inline-block;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.lyrics__songs {
+    display: inline;
+}
+
+.lyrics__songs div {
+    display: inline-block;
+    padding: 0 0.3em;
+    cursor: pointer;
+}
