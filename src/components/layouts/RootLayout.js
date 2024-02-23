@@ -15,18 +15,18 @@ export default function RootLayout({ children }) {
                 <YandexMetrika yid="87547729" clickmap="true" trackLinks="true" accurateTrackBounce="true" webvisor="true" />
             </head>
             <body className={oswald.className}>
-            <ConfigProvider
-                theme={{
-                    token: {
-                        colorBgBase: 'white',
-                        colorPrimary: 'darkred',
-                        colorText: '#020304',
-                        fontFamily: `${oswald.style.fontFamily}`
-                    }
-                }}
-            >
-            {children}
-            </ConfigProvider>
+                <ConfigProvider
+                    theme={{
+                        token: {
+                            colorBgBase: 'white',
+                            colorPrimary: 'darkred',
+                            colorText: '#020304',
+                            fontFamily: `${oswald.style.fontFamily}`
+                        }
+                    }}
+                >
+                    {children}
+                </ConfigProvider>
             </body>
         </html>
     )

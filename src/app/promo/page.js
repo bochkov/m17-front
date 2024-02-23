@@ -6,21 +6,22 @@ import * as Logo from '@/components/logos/LgMusicProv';
 
 import './promo.css';
 
-function AlbumLink({link}) {
+function AlbumLink({ link }) {
+    const links = {
+        '1': <Logo.LgYandexColor />,
+        '2': <Logo.LgAppleMusicColor />,
+        '3': <Logo.LgSpotifyColor />,
+        '4': <Logo.LgYoutubeColor />,
+        '5': <Logo.LgVkMusicColor />
+    }
     return (
         <a href={link.url} target='_blank' rel='noreferrer' className='promo__album__link__provider'>
-            {{
-                '1': <Logo.LgYandexColor />,
-                '2': <Logo.LgAppleMusicColor />,
-                '3': <Logo.LgSpotifyColor />,
-                '4': <Logo.LgYoutubeColor />,
-                '5': <Logo.LgVkMusicColor />
-            }[link.provid]}
+            {links[link.provid]}
         </a>
     )
 }
 
-function AlbumLinksOrSoon({links}) {
+function AlbumLinksOrSoon({ links }) {
     return (
         links.length === 0 ?
             <span className='promo__album__soon'>скоро</span> :
@@ -37,7 +38,7 @@ function AlbumCover(props) {
     )
 }
 
-function Album({music}) {
+function Album({ music }) {
     return (
         <div className='promo__album'>
             <AlbumCover className='promo__album__cover' slug={music.slug} /><p />

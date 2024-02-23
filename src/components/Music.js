@@ -9,22 +9,23 @@ import { LgAppleMusic, LgSpotify, LgVkMusic, LgYandex, LgYoutube } from './logos
 
 import './Music.css';
 
-function AlbumLink({link}) {
+function AlbumLink({ link }) {
+    const links = {
+        '1': <LgYandex />,
+        '2': <LgAppleMusic />,
+        '3': <LgSpotify />,
+        '4': <LgYoutube />,
+        '5': <LgVkMusic />
+    }
     return (
         <a href={link.url} target='_blank' rel='noreferrer noopener'
             className='album__link__provider invert'>
-            {{
-                '1': <LgYandex />,
-                '2': <LgAppleMusic />,
-                '3': <LgSpotify />,
-                '4': <LgYoutube />,
-                '5': <LgVkMusic />
-            }[link.provid]}
+            {links[link.provid]}
         </a>
     )
 }
 
-function AlbumLinksOrSoon({links}) {
+function AlbumLinksOrSoon({ links }) {
     return (
         links.length === 0 ?
             <span className='album__soon'>скоро</span> :
@@ -41,7 +42,7 @@ function AlbumCover(props) {
     )
 }
 
-function Album({music}) {
+function Album({ music }) {
     return (
         <div className='album'>
             <span className='album__title'>{music.name}</span><br />
@@ -52,7 +53,7 @@ function Album({music}) {
     )
 }
 
-export default function Music({type}) {
+export default function Music({ type }) {
     const [musics, setMusics] = React.useState(null)
 
     const getEndpoint = (type) => {
@@ -80,14 +81,14 @@ export default function Music({type}) {
         <div>
             {
                 musics === null ?
-                <div /> :
-                musics.map(
-                    (m, key) =>
-                        <div key={m.id}>
-                            <Album music={m} />
-                            <Divide cur={key + 1} total={musics.length} />
-                        </div>
-                )
+                    <div /> :
+                    musics.map(
+                        (m, key) =>
+                            <div key={m.id}>
+                                <Album music={m} />
+                                <Divide cur={key + 1} total={musics.length} />
+                            </div>
+                    )
             }
         </div>
     )

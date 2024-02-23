@@ -29,6 +29,6 @@
 
 .lyrics__songs div {
     display: inline-block;
-    padding: 0 0.3em;
+    padding: 0.3em;
     cursor: pointer;
 }

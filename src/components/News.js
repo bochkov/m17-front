@@ -8,7 +8,7 @@ import Divide from './Divide';
 
 import './News.css';
 
-function Post({post}) {
+function Post({ post }) {
     return (
         <div className='post'>
             <h2 className='post__title'>{post.title}</h2>

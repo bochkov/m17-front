@@ -19,7 +19,7 @@ export default function Header() {
             {/*<div className="header__logo"></div>*/}
             <section className="layers">
                 <div className="layers__container">
-                    <div className="layers__item layer-1" style={{backgroundImage: "url('/static/img/header/header3.jpg')"}}></div>
+                    <div className="layers__item layer-1" style={{ backgroundImage: "url('/static/img/header/header3.jpg')" }}></div>
                     <div className="layers__item layer-2"></div>
                     <div className="layers__item layer-3">
                         {/*
