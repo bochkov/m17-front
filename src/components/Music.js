@@ -38,7 +38,7 @@ function AlbumLinksOrSoon({ links }) {
 function AlbumCover(props) {
     return (
         <Image className={props.className}
-            src={'/static/img/music/' + props.slug + '.png'} alt='' width={0} height={0} sizes='100vw' />
+            src={`/static/img/music/${props.slug}.png`} alt='' width={0} height={0} sizes='100vw' />
     )
 }
 
@@ -81,7 +81,7 @@ export default function Music({ type }) {
         <div>
             {
                 musics === null ?
-                    <div /> :
+                    <></> :
                     musics.map(
                         (m, key) =>
                             <div key={m.id}>

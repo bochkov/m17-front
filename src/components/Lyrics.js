@@ -1,7 +1,8 @@
 'use client'
 
-import { Caveat } from 'next/font/google';
 import React from 'react';
+
+import { Caveat } from 'next/font/google';
 import Image from 'next/image';
 
 import Divide from './Divide';
@@ -16,6 +17,7 @@ const caveat = Caveat({
 
 export default function Lyrics() {
     const [albums, setAlbums] = React.useState(null)
+    const [curAlbum, setCurAlbum] = React.useState(null)
     const [songs, setSongs] = React.useState(null)
     const [lyrics, setLyrics] = React.useState(null)
 
@@ -25,21 +27,26 @@ export default function Lyrics() {
             .then(resp => {
                 resp.sort((a, b) => a.id > b.id ? 1 : -1)
                 setAlbums(resp);
-                fetchSongs(resp[0].id)
+                fetchSongs(resp[0])
             })
     }
 
-    const fetchSongs = (albumId) => {
-        fetch('/api/v1/albums/' + albumId + '/songs')
+    const fetchSongs = (album) => {
+        setCurAlbum(album);
+        fetch(`/api/v1/lyric/${album.slug}`)
             .then(resp => resp.json())
             .then(resp => {
                 setSongs(resp);
-                setLyrics(resp[0])
+                showLyrics(album, resp[0])
             })
     }
 
-    const showLyrics = (lyric) => {
+    const showLyrics = (album, lyric) => {
         setLyrics(lyric)
+        ym(87547729, 'hit', '/lyrics', {params: {
+            title: `${lyric.name} :: ${album.name}`,
+            referer: `${window.location.href}/${album.slug}/${lyric.slug}`
+        }});
     }
 
     React.useEffect(() => {
@@ -54,7 +61,7 @@ export default function Lyrics() {
                         <div /> :
                         albums.map(
                             (music) =>
-                                <div className='lyrics__album' key={music.id} onClick={() => fetchSongs(music.id)}>
+                                <div className='lyrics__album' key={music.id} onClick={() => fetchSongs(music)}>
                                     <AlbumCover className='album__cover' slug={music.slug} />
                                     <br />
                                     <span>{music.name}</span>
@@ -68,7 +75,7 @@ export default function Lyrics() {
                     songs === null ?
                         <div /> :
                         songs.map(
-                            (s) => <div key={s.id} onClick={() => showLyrics(s)}>{s.name}</div>
+                            (s) => <div key={s.id} onClick={() => showLyrics(curAlbum, s)}>{s.name}</div>
                         )
                 }
                 <Divide cur={1} total={lyrics === null ? 1 : 2} />
@@ -87,7 +94,7 @@ export default function Lyrics() {
 function AlbumCover(props) {
     return (
         <Image className={props.className}
-            src={'/static/img/music/' + props.slug + '.png'} alt='' width='70' height='70' sizes='100vw' />
+            src={`/static/img/music/${props.slug}.png`} alt='' width={0} height={0} sizes='50vw' />
     )
 }
 

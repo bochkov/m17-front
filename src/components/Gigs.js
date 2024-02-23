@@ -12,7 +12,7 @@ import './Gigs.css';
 function Gig({ gig }) {
 
     const logoOf = (place) => {
-        return '/static/img/place/' + place.slug + '.png';
+        return `/static/img/place/${place.slug}.png`;
     }
 
     const needInvert = (place) => {
@@ -70,9 +70,7 @@ export default function Gigs() {
     return (
         <div>
             {gigs.length === 0 ?
-                <div>
-                    <h3>Ближайших концертов пока не предвидится</h3>
-                </div> :
+                <h3>Ближайших концертов пока не предвидится</h3> :
                 <div>
                     {gigs.map(
                         (gig, key) =>
