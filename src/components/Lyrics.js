@@ -26,6 +26,7 @@ export default function Lyrics() {
             .then(resp => resp.json())
             .then(resp => {
                 resp.sort((a, b) => a.id > b.id ? 1 : -1)
+                resp = resp.concat([{ 'id': -1, 'slug': '', 'name': 'Все' }])
                 setAlbums(resp);
                 fetchSongs(resp[0])
             })
@@ -37,57 +38,86 @@ export default function Lyrics() {
             .then(resp => resp.json())
             .then(resp => {
                 setSongs(resp);
-                showLyrics(album, resp[0])
+                album.slug === '' ?
+                    showAllLyrics(resp) :
+                    showLyrics(album, resp[0]);
             })
     }
 
     const showLyrics = (album, lyric) => {
         setLyrics(lyric)
-        ym(87547729, 'hit', '/lyrics', {params: {
-            title: `${lyric.name} :: ${album.name}`,
-            referer: `${window.location.href}/${album.slug}/${lyric.slug}`
-        }});
+        ym(87547729, 'hit', '/lyrics', {
+            params: {
+                title: `${lyric.name} :: ${album.name}`,
+                referer: `${window.location.href}/${album.slug}/${lyric.slug}`
+            }
+        });
+    }
+
+    const showAllLyrics = (lyric) => {
+        setLyrics(lyric)
+        ym(87547729, 'hit', '/lyrics', {
+            params: {
+                title: `Все тексты`,
+                referer: `${window.location.href}`
+            }
+        });
     }
 
     React.useEffect(() => {
         fetchAlbums();
     }, [])
 
-    return (
-        <div>
-            <div className='lyrics__albums'>
-                {
-                    albums === null ?
-                        <div /> :
+    function Albums() {
+        return (
+            albums === null ?
+                <></> :
+                <div className='lyrics__albums'>
+                    {
                         albums.map(
                             (music) =>
                                 <div className='lyrics__album' key={music.id} onClick={() => fetchSongs(music)}>
-                                    <AlbumCover className='album__cover' slug={music.slug} />
+                                    <AlbumCover className='lyrics__album__cover' slug={music.slug === '' ? 'mix' : music.slug} />
                                     <br />
                                     <span>{music.name}</span>
                                 </div>
                         )
-                }
-                <Divide cur={1} total={songs === null ? 1 : 2} />
-            </div>
+                    }
+                </div>
+        )
+    }
+
+    function Songs() {
+        return (
             <div className='lyrics__songs'>
                 {
-                    songs === null ?
-                        <div /> :
-                        songs.map(
-                            (s) => <div key={s.id} onClick={() => showLyrics(curAlbum, s)}>{s.name}</div>
-                        )
-                }
-                <Divide cur={1} total={lyrics === null ? 1 : 2} />
-            </div>
-            <div>
-                {
-                    lyrics === null ?
-                        <div /> :
-                        <Lyric key={lyrics.id} lyric={lyrics} />
+                    songs.map(
+                        (s) => <div key={s.id} onClick={() => showLyrics(curAlbum, s)}>{s.name}</div>
+                    )
                 }
             </div>
-        </div>
+        )
+    }
+
+    return (
+        <>
+            {
+                albums === null ?
+                    <></> :
+                    <>
+                        <Albums />
+                        <Divide cur={1} total={2} />
+                    </>
+            }{
+                songs === null || curAlbum === null || curAlbum.slug === '' ?
+                    <></> :
+                    <>
+                        <Songs />
+                        <Divide cur={1} total={2} />
+                    </>
+            }
+            <Lyric lyric={lyrics} />
+        </>
     )
 }
 
@@ -98,12 +128,32 @@ function AlbumCover(props) {
     )
 }
 
-
 function Lyric({ lyric }) {
+
+    function OneLyric({ lyric }) {
+        return (
+            lyric === null ?
+                <></> :
+                <div className='lyric'>
+                    <span className='lyric__name'>{lyric.name}</span>
+                    <span className={`${caveat.className} lyric__text`}>{lyric.lyrics}</span>
+                </div>
+        )
+    }
+
     return (
-        <div className='lyric'>
-            <span className='lyric__name'>{lyric.name}</span>
-            <span className={`${caveat.className} lyric__text`}>{lyric.lyrics}</span>
-        </div>
+        lyric instanceof Array ?
+            <div className='lyrics'>
+                {
+                    lyric.map((l, idx) =>
+                        <div key={l.id}>
+                            <OneLyric lyric={l} />
+                            <Divide cur={idx + 1} total={lyric.length} />
+                        </div>
+                    )
+                }
+            </div>
+            :
+            <OneLyric lyric={lyric} />
     )
 }

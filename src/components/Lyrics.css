@@ -23,6 +23,12 @@
     cursor: pointer;
 }
 
+.lyrics__album__cover {
+    margin: 0.2em 0;
+    width: 70px;
+    height: 70px;
+}
+
 .lyrics__songs {
     display: inline;
 }
@@ -31,10 +37,4 @@
     display: inline-block;
     padding: 0.3em;
     cursor: pointer;
-}
-
-.album__cover {
-    margin: 0.2em 0;
-    width: 70px;
-    height: 70px;
 }

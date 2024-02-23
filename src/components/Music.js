@@ -83,10 +83,10 @@ export default function Music({ type }) {
                 musics === null ?
                     <></> :
                     musics.map(
-                        (m, key) =>
+                        (m, idx) =>
                             <div key={m.id}>
                                 <Album music={m} />
-                                <Divide cur={key + 1} total={musics.length} />
+                                <Divide cur={idx + 1} total={musics.length} />
                             </div>
                     )
             }
