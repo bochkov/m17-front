@@ -46,20 +46,18 @@ export default function Lyrics() {
 
     const showLyrics = (album, lyric) => {
         setLyrics(lyric)
-        ym(87547729, 'hit', '/lyrics', {
+        window.ym(87547729, 'hit', `/lyrics/${album.slug}/${lyric.slug}`, {
             params: {
                 title: `${lyric.name} :: ${album.name}`,
-                referer: `${window.location.href}/${album.slug}/${lyric.slug}`
             }
         });
     }
 
     const showAllLyrics = (lyric) => {
         setLyrics(lyric)
-        ym(87547729, 'hit', '/lyrics', {
+        window.ym(87547729, 'hit', '/lyrics/all', {
             params: {
                 title: `Все тексты`,
-                referer: `${window.location.href}`
             }
         });
     }
