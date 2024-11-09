@@ -2,12 +2,17 @@
 
 import React from 'react';
 import Image from 'next/image';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment/locale/ru';
 
 import Divide from './Divide';
 
 import './Gigs.css';
+
+Gig.propTypes = {
+    gig: PropTypes.object.isRequired
+}
 
 function Gig({ gig }) {
 

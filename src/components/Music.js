@@ -1,13 +1,17 @@
 'use client'
 
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Image from 'next/image';
 
 import Divide from './Divide';
 import { LgAppleMusic, LgSpotify, LgVkMusic, LgYandex, LgYoutube } from './logos/LgMusicProv';
 
 import './Music.css';
+
+AlbumLink.propTypes = {
+    link: PropTypes.object.isRequired
+}
 
 function AlbumLink({ link }) {
     const links = {
@@ -25,6 +29,10 @@ function AlbumLink({ link }) {
     )
 }
 
+AlbumLinksOrSoon.propTypes = {
+    links: PropTypes.array
+}
+
 function AlbumLinksOrSoon({ links }) {
     return (
         links.length === 0 ?
@@ -35,11 +43,20 @@ function AlbumLinksOrSoon({ links }) {
     )
 }
 
+AlbumCover.propTypes = {
+    className: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+}
+
 function AlbumCover(props) {
     return (
         <Image className={props.className}
             src={`/static/img/music/${props.slug}.png`} alt='' width={0} height={0} sizes='100vw' />
     )
+}
+
+Album.propTypes = {
+    music: PropTypes.object.isRequired
 }
 
 function Album({ music }) {
@@ -51,6 +68,10 @@ function Album({ music }) {
             <AlbumLinksOrSoon links={music.links} />
         </div>
     )
+}
+
+Music.propTypes = {
+    type: PropTypes.string
 }
 
 export default function Music({ type }) {

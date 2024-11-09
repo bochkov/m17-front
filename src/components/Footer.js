@@ -9,38 +9,45 @@ import './Footer.css';
 export default function Footer() {
     const urls = [
         {
+            'id': 1,
             'url': 'mailto:info@m17.info',
             'cn': <FontAwesomeIcon icon={faEnvelope} />
         },
         {
+            'id': 2,
             'url': 'https://vk.com/band_m17',
             'cn': <FontAwesomeIcon icon={faVk} />
         },
         {
+            'id': 3,
             'url': 'https://t.me/m17_band',
             'cn': <FontAwesomeIcon icon={faTelegram} />
         },
         {
+            'id': 4,
             'url': 'https://www.instagram.com/band_m17/',
             'cn': <FontAwesomeIcon icon={faInstagram} />
         },
         {
+            'id': 5,
             'url': 'https://open.spotify.com/artist/60Utw1lKdWMXTWONojuscQ',
             'cn': <FontAwesomeIcon icon={faSpotify} />
         },
         {
+            'id': 6,
             'url': 'https://music.yandex.ru/artist/5259810',
             'cn': <FontAwesomeIcon icon={faYandex} />
         },
         {
+            'id': 7,
             'url': 'https://music.apple.com/ru/artist/m17/1266716485',
             'cn': <FontAwesomeIcon icon={faItunesNote} />
         },
     ]
 
     const year = () => {
-        var ystr = "";
-        var y = new Date().getFullYear();
+        let ystr = "";
+        let y = new Date().getFullYear();
         if (y > 2019) {
             ystr = " &ndash; " + y
         }
@@ -49,9 +56,9 @@ export default function Footer() {
 
     return (
         <div className='contacts'>
-            {urls.map((url, key) =>
+            {urls.map((url) =>
                 <Button className='contacts__link' size='large'
-                    key={key} icon={url.cn} shape="circle" type='link'
+                    key={url.id} icon={url.cn} shape="circle" type='link'
                     href={url.url} target='_blank' rel='noreferrer' />
             )}
             <p className='contacts__copyright' dangerouslySetInnerHTML={{ __html: year() }}></p>

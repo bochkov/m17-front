@@ -1,4 +1,4 @@
-import Tech from "@/components/Tech"
+import Tech from "@/components/Tech";
 
 export default function TechPage() {
     return <Tech />

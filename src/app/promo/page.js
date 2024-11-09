@@ -1,10 +1,15 @@
 'use client'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import * as Logo from '@/components/logos/LgMusicProv';
 
 import './promo.css';
+
+AlbumLink.propTypes = {
+    link: PropTypes.object.isRequired
+}
 
 function AlbumLink({ link }) {
     const links = {
@@ -21,6 +26,10 @@ function AlbumLink({ link }) {
     )
 }
 
+AlbumLinksOrSoon.propTypes = {
+    links: PropTypes.array.isRequired
+}
+
 function AlbumLinksOrSoon({ links }) {
     return (
         links.length === 0 ?
@@ -31,11 +40,20 @@ function AlbumLinksOrSoon({ links }) {
     )
 }
 
+AlbumCover.propTypes = {
+    className: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired
+}
+
 function AlbumCover(props) {
     return (
         <img className={props.className}
             src={'/static/img/music/' + props.slug + '.png'} alt='' />
     )
+}
+
+Album.propTypes = {
+    music: PropTypes.object.isRequired
 }
 
 function Album({ music }) {

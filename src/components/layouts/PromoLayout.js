@@ -1,6 +1,12 @@
 'use client'
 
-import YandexMetrika from '@/components/util/YaMetrika'
+import PropTypes from 'prop-types';
+
+import YandexMetrika from '@/components/util/YaMetrika';
+
+PromoLayout.propTypes = {
+    children: PropTypes.object.isRequired
+}
 
 export default function PromoLayout({ children }) {
     return (

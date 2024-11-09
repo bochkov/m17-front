@@ -1,12 +1,19 @@
+import PropTypes from 'prop-types';
+
 import { Oswald } from 'next/font/google';
 import { ConfigProvider } from 'antd';
-import YandexMetrika from '@/components/util/YaMetrika'
+
+import YandexMetrika from '@/components/util/YaMetrika';
 
 const oswald = Oswald({
     subsets: ['cyrillic'],
     weight: '300',
     display: 'swap'
 });
+
+RootLayout.propTypes = {
+    children: PropTypes.object.isRequired
+}
 
 export default function RootLayout({ children }) {
     return (

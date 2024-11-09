@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Caveat } from 'next/font/google';
 import Image from 'next/image';
 
@@ -119,6 +119,11 @@ export default function Lyrics() {
     )
 }
 
+AlbumCover.propTypes = {
+    className: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+}
+
 function AlbumCover(props) {
     return (
         <Image className={props.className}
@@ -126,19 +131,11 @@ function AlbumCover(props) {
     )
 }
 
+Lyric.propTypes = {
+    lyric: PropTypes.any
+}
+
 function Lyric({ lyric }) {
-
-    function OneLyric({ lyric }) {
-        return (
-            lyric === null ?
-                <></> :
-                <div className='lyric'>
-                    <span className='lyric__name'>{lyric.name}</span>
-                    <span className={`${caveat.className} lyric__text`}>{lyric.lyrics}</span>
-                </div>
-        )
-    }
-
     return (
         lyric instanceof Array ?
             <div className='lyrics'>
@@ -153,5 +150,20 @@ function Lyric({ lyric }) {
             </div>
             :
             <OneLyric lyric={lyric} />
+    )
+}
+
+OneLyric.propTypes = {
+    lyric: PropTypes.object
+}
+
+function OneLyric({ lyric }) {
+    return (
+        lyric === null ?
+            <></> :
+            <div className='lyric'>
+                <span className='lyric__name'>{lyric.name}</span>
+                <span className={`${caveat.className} lyric__text`}>{lyric.lyrics}</span>
+            </div>
     )
 }

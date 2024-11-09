@@ -1,10 +1,18 @@
 /// https://github.com/kirillzhosul/next-yandex-metrika
 /// Yandex Metrika for Next.JS
+import PropTypes from 'prop-types';
 
 function convertParam(boolValue, defaultValue) {
-  return (boolValue === undefined ? defaultValue : boolValue)
-    ? "true"
-    : "false";
+  let b = boolValue === undefined ? defaultValue : boolValue
+  return b ? "true" : "false"
+}
+
+YandexMetrikaTag.propTypes = {
+  yid: PropTypes.string.isRequired,
+  clickmap: PropTypes.bool,
+  trackLinks: PropTypes.bool,
+  accurateTrackBounce: PropTypes.bool,
+  webvisor: PropTypes.bool
 }
 
 function YandexMetrikaTag({
@@ -50,6 +58,10 @@ function YandexMetrikaTag({
   );
 }
 
+YandexMetrikaPixel.propTypes = {
+  yid: PropTypes.string.isRequired
+}
+
 function YandexMetrikaPixel({ yid }) {
   /// Pixel version of the Yandex Metrika.
   /// Used when there is no JavaScript on the target browser.
@@ -70,6 +82,14 @@ function YandexMetrikaPixel({ yid }) {
       </div>
     </noscript>
   );
+}
+
+YandexMetrika.propTypes = {
+  yid: PropTypes.string.isRequired,
+  clickmap: PropTypes.bool,
+  trackLinks: PropTypes.bool,
+  accurateTrackBounce: PropTypes.bool,
+  webvisor: PropTypes.bool
 }
 
 export default function YandexMetrika({

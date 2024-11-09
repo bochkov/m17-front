@@ -1,12 +1,17 @@
 'use client'
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment/locale/ru';
 
 import Divide from './Divide';
 
 import './News.css';
+
+Post.propTypes = {
+    post: PropTypes.object.isRequired
+}
 
 function Post({ post }) {
     return (

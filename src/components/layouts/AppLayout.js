@@ -1,10 +1,16 @@
 'use client'
 
-import { Row, Col } from 'antd'
+import PropTypes from 'prop-types';
 
-import Header from '@/components/Header'
-import MenuBar from '@/components/MenuBar'
-import Footer from '@/components/Footer'
+import { Row, Col } from 'antd';
+
+import Header from '@/components/Header';
+import MenuBar from '@/components/MenuBar';
+import Footer from '@/components/Footer';
+
+AppLayout.propTypes = {
+    children: PropTypes.object.isRequired
+}
 
 export default function AppLayout({ children }) {
     return (

@@ -3,6 +3,7 @@ import React from 'react';
 export default function Tech() {
     const assets = [
         {
+            'id': 1,
             'url': '/static/assets/tech_rider.pdf',
             'name': 'Технический райдер группы'
         }
@@ -11,9 +12,9 @@ export default function Tech() {
     return (
         <div>
             {assets.map(
-                (asset, key) =>
+                (asset) =>
                     <a href={asset.url}
-                        key={key}
+                        key={asset.id}
                         target='_blank' rel='noreferrer'>
                         {asset.name}
                     </a>
