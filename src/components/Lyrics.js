@@ -17,9 +17,6 @@ const caveat = Caveat({
 
 export default function Lyrics() {
     const [albums, setAlbums] = React.useState(null)
-    const [curAlbum, setCurAlbum] = React.useState(null)
-    const [songs, setSongs] = React.useState(null)
-    const [lyrics, setLyrics] = React.useState(null)
 
     const fetchAlbums = () => {
         fetch('/api/v1/albums')
@@ -28,9 +25,23 @@ export default function Lyrics() {
                 resp.sort((a, b) => a.id > b.id ? 1 : -1)
                 resp = resp.concat([{ 'id': -1, 'slug': '', 'name': 'Все' }])
                 setAlbums(resp);
-                fetchSongs(resp[0])
             })
     }
+
+    React.useEffect(() => {
+        fetchAlbums();
+    }, [])
+
+    return <Albums albums={albums} />
+}
+
+Albums.propTypes = {
+    albums: PropTypes.array
+}
+
+function Albums({ albums }) {
+    const [curAlbum, setCurAlbum] = React.useState(null)
+    const [songs, setSongs] = React.useState(null)
 
     const fetchSongs = (album) => {
         setCurAlbum(album);
@@ -38,43 +49,24 @@ export default function Lyrics() {
             .then(resp => resp.json())
             .then(resp => {
                 setSongs(resp);
-                album.slug === '' ?
-                    showAllLyrics(resp) :
-                    showLyrics(album, resp[0]);
             })
     }
 
-    const showLyrics = (album, lyric) => {
-        setLyrics(lyric)
-        window.ym(87547729, 'hit', `/lyrics/${album.slug}/${lyric.slug}`, {
-            params: {
-                title: `${lyric.name} :: ${album.name}`,
-            }
-        });
-    }
-
-    const showAllLyrics = (lyric) => {
-        setLyrics(lyric)
-        window.ym(87547729, 'hit', '/lyrics/all', {
-            params: {
-                title: `Все тексты`,
-            }
-        });
-    }
-
     React.useEffect(() => {
-        fetchAlbums();
-    }, [])
+        if (albums != null) {
+            fetchSongs(albums[0]);
+        }
+    }, [albums])
 
-    function Albums() {
-        return (
-            albums === null ?
-                <></> :
+    return (
+        albums === null ?
+            <></> :
+            <>
                 <div className='lyrics__albums'>
                     {
                         albums.map(
                             (music) =>
-                                <div className='lyrics__album' key={music.id} onClick={() => fetchSongs(music)}>
+                                <div role="presentation" className='lyrics__album' key={music.id} onClick={() => fetchSongs(music)}>
                                     <AlbumCover className='lyrics__album__cover' slug={music.slug === '' ? 'mix' : music.slug} />
                                     <br />
                                     <span>{music.name}</span>
@@ -82,42 +74,60 @@ export default function Lyrics() {
                         )
                     }
                 </div>
-        )
+                <Divide cur={1} total={2} />
+                <Songs curAlbum={curAlbum} songs={songs} />
+            </>
+    )
+}
+
+Songs.propTypes = {
+    curAlbum: PropTypes.object,
+    songs: PropTypes.array
+}
+
+function Songs({ curAlbum, songs }) {
+
+    const [lyrics, setLyrics] = React.useState(null)
+
+    React.useEffect(() => {
+        if (curAlbum == null || curAlbum.slug === '') {
+            showAllLyrics(songs);
+        } else if (songs != null) {
+            showLyrics(curAlbum, songs[0]);
+        }
+    }, [curAlbum, songs])
+
+
+    const showLyrics = (album, lyric) => {
+        setLyrics(lyric)
+        window.ym(87547729, 'hit', `/lyrics/${album.slug}/${lyric.slug}`, {
+            title: `${lyric.name} :: ${album.name}`,
+        });
     }
 
-    function Songs() {
-        return (
+    const showAllLyrics = (lyric) => {
+        setLyrics(lyric)
+        window.ym(87547729, 'hit', '/lyrics/all', {
+            title: `Все тексты`,
+        });
+    }
+
+    return songs === null || curAlbum === null || curAlbum.slug === '' ?
+        <Lyric lyric={lyrics} />
+        :
+        <>
             <div className='lyrics__songs'>
                 {
                     songs.map(
-                        (s) => <div key={s.id} onClick={() => showLyrics(curAlbum, s)}>{s.name}</div>
+                        (s) => <div role="presentation" key={s.id} onClick={() => showLyrics(curAlbum, s)}>{s.name}</div>
                     )
                 }
             </div>
-        )
-    }
-
-    return (
-        <>
-            {
-                albums === null ?
-                    <></> :
-                    <>
-                        <Albums />
-                        <Divide cur={1} total={2} />
-                    </>
-            }{
-                songs === null || curAlbum === null || curAlbum.slug === '' ?
-                    <></> :
-                    <>
-                        <Songs />
-                        <Divide cur={1} total={2} />
-                    </>
-            }
+            <Divide cur={1} total={2} />
             <Lyric lyric={lyrics} />
         </>
-    )
 }
+
 
 AlbumCover.propTypes = {
     className: PropTypes.string.isRequired,
