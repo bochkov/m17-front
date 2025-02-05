@@ -100,15 +100,19 @@ function Songs({ curAlbum, songs }) {
 
     const showLyrics = (album, lyric) => {
         setLyrics(lyric)
-        window.ym(87547729, 'hit', `/lyrics/${album.slug}/${lyric.slug}`, {
-            title: `${lyric.name} :: ${album.name}`,
+        ym(87547729, 'hit', `/lyrics/${album.slug}/${lyric.slug}`, {
+            params: {
+                title: `${lyric.name} :: ${album.name}`,
+            }
         });
     }
 
     const showAllLyrics = (lyric) => {
         setLyrics(lyric)
-        window.ym(87547729, 'hit', '/lyrics/all', {
-            title: `Все тексты`,
+        ym(87547729, 'hit', '/lyrics/all', {
+            params: {
+                title: `Все тексты`,
+            }
         });
     }
 

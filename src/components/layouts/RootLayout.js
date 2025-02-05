@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
                 <ConfigProvider
                     theme={{
                         token: {
-                            colorBgBase: 'white',
-                            colorPrimary: 'darkred',
-                            colorText: '#020304',
+                            colorLink: '#8b0000',
+                            colorPrimary: '#8b0000', // darkred
+                            colorTextBase: '#020304',
                             fontFamily: `${oswald.style.fontFamily}`
                         }
                     }}
