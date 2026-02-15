@@ -16,10 +16,10 @@ AlbumLink.propTypes = {
 function AlbumLink({ link }) {
     const links = {
         '1': <LgYandex />,
-        '2': <LgAppleMusic />,
+        '2': <LgVkMusic />,
         '3': <LgSpotify />,
-        '4': <LgYoutube />,
-        '5': <LgVkMusic />
+        '4': <LgAppleMusic />,
+        '5': <LgYoutube />,
     }
     return (
         <a href={link.url} target='_blank' rel='noreferrer noopener'
@@ -33,13 +33,17 @@ AlbumLinksOrSoon.propTypes = {
     links: PropTypes.array
 }
 
-function AlbumLinksOrSoon({ links }) {
+function AlbumLinksOrSoon({ links, cur, total }) {
     return (
-        links.length === 0 ?
-            <span className='album__soon'>скоро</span> :
-            links.map(
-                link => <AlbumLink key={link.id} link={link} />
-            )
+        links.length === 0 && cur === total
+            ? <span className='album__soon'>скоро</span>
+            : links
+                .sort(
+                    (l1, l2) => l1.provId - l2.provId
+                )
+                .map(
+                    link => <AlbumLink key={link.id} link={link} />
+                )
     )
 }
 
@@ -59,13 +63,13 @@ Album.propTypes = {
     music: PropTypes.object.isRequired
 }
 
-function Album({ music }) {
+function Album({ music, cur, total }) {
     return (
         <div className='album'>
             <span className='album__title'>{music.name}</span><br />
             <span className='album__year'>{music.year}</span><br />
             <AlbumCover className='album__cover' slug={music.slug} /><br />
-            <AlbumLinksOrSoon links={music.links} />
+            <AlbumLinksOrSoon links={music.links} cur={cur} total={total} />
         </div>
     )
 }
@@ -101,15 +105,21 @@ export default function Music({ type }) {
     return (
         <div>
             {
-                musics === null ?
-                    <></> :
-                    musics.map(
-                        (m, idx) =>
-                            <div key={m.id}>
-                                <Album music={m} />
-                                <Divide cur={idx + 1} total={musics.length} />
-                            </div>
-                    )
+                musics === null
+                    ? <></>
+                    : musics
+                        .sort(
+                            (m1, m2) => m1.year === m2.year
+                                ? m2.id - m1.id
+                                : m2.year - m1.year
+                        )
+                        .map(
+                            (m, idx) =>
+                                <div key={m.id}>
+                                    <Album music={m} cur={idx + 1} total={musics.length} />
+                                    <Divide cur={idx + 1} total={musics.length} />
+                                </div>
+                        )
             }
         </div>
     )

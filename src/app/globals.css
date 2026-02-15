@@ -27,11 +27,5 @@ body {
   color: gray;
   height: 1px;
   background: gray;
-  background: -webkit-gradient(radial,
-          50% 50%,
-          0,
-          50% 50%,
-          350,
-          from(#fff),
-          to(#555));
+  background: radial-gradient(circle, #fff, #555);
 }
