@@ -10,7 +10,7 @@ export default function Footer() {
     const urls = [
         {
             'id': 1,
-            'url': 'mailto:m17@m17.online',
+            'url': 'mailto:m17@m17band.ru',
             'cn': <FontAwesomeIcon icon={faEnvelope} />
         },
         {

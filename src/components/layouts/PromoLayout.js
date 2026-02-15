@@ -1,8 +1,5 @@
-'use client'
-
 import PropTypes from 'prop-types';
-
-import YandexMetrika from '@/components/util/YaMetrika';
+import ThemeProvider from './ThemeProvider';
 
 PromoLayout.propTypes = {
     children: PropTypes.object.isRequired
@@ -10,13 +7,6 @@ PromoLayout.propTypes = {
 
 export default function PromoLayout({ children }) {
     return (
-        <html lang="en">
-            <head>
-                <YandexMetrika yid="87547729" clickmap="true" trackLinks="true" accurateTrackBounce="true" webvisor="true" />
-            </head>
-            <body>
-                {children}
-            </body>
-        </html>
+        <ThemeProvider>{children}</ThemeProvider>
     )
 }

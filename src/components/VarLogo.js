@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import { VaWinter, VaNewYear, VaSpring, VaAutumn, VaDefault } from './logos/LgVars';
 

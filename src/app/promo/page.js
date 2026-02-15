@@ -21,7 +21,7 @@ function AlbumLink({ link }) {
     }
     return (
         <a href={link.url} target='_blank' rel='noreferrer' className='promo__album__link__provider'>
-            {links[link.provid]}
+            {links[link.provId]}
         </a>
     )
 }
